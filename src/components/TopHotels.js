@@ -5,11 +5,11 @@ const arr = [1, 23, 4, 5, 67, 89];
 
 const TopHotels = () => {
   return (
-    <div className="h-max py-10 max-w-screen-xl mx-auto">
+    <div className="h-max py-10 lg:w-5/6 max-w-screen-xl mx-auto">
       <p className="pl-3 md:pl-8 lg:pl-0 py-3 font-semibold text-2xl">
         Popular Hotels
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 px-3 md:px-8 lg:px-0 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 px-3 md:px-8 lg:px-0 gap-3">
         {arr.map((d, i) => {
           return (
             <div className="border rounded-md hover:shadow-lg h-max" key={i}>

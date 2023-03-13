@@ -26,21 +26,21 @@ const Navbar = () => {
       } 
       } `}
     >
-      <div className="relative flex justify-between items-center md:h-[80px] h-[70px] max-w-screen-xl mx-auto">
-        <div className="">
+      <div className="relative flex justify-between items-center md:h-[80px] h-[70px] lg:w-5/6 max-w-screen-xl mx-auto">
+        <div className="w-1/12 lg:w-0">
           {open ? (
             <GiHamburgerMenu
               onClick={() => setOpen(!open)}
-              className="block lg:hidden text-3xl text-[#1c3c6b]"
+              className="block lg:hidden text-3xl text-[#1c3c6b] ml-3"
             />
           ) : (
             <GiHamburgerMenu
               onClick={() => setOpen(!open)}
-              className="block lg:hidden text-3xl text-[#1c3c6b]"
+              className="block lg:hidden text-3xl text-[#1c3c6b] ml-3"
             />
           )}
         </div>
-        <div className="flex lg:flex-row flex-col lg:justify-between  md:items-center w-full text-center lg:text-start">
+        <div className="flex lg:flex-row flex-col lg:justify-between  md:items-center text-center lg:text-start  w-full">
           <div className="md:static">
             <Link className="text-3xl uppercase font-bold" to="/">
               Bookify

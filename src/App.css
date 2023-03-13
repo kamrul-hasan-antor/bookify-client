@@ -19,3 +19,9 @@ body {
 h3 {
   font-family: mySecondFont;
 }
+p {
+  color: #3a4856;
+}
+small {
+  color: #6b6b7b;
+}

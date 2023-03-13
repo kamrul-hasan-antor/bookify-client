@@ -37,12 +37,100 @@ const SearchHotels = () => {
       </div>
       <form
         onSubmit={handleSubmit}
+        className="grid md:grid-cols-2 lg:grid-cols-5 gap-2 w-full mt-10"
+      >
+        <div className="w-full">
+          <label
+            htmlFor="destination"
+            className="block mb-2 font-medium dark:text-white pl-0.5  uppercase"
+          >
+            Select Destination
+          </label>
+          <select
+            id="destination"
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full px-1"
+          >
+            {destination.map((d, i) => (
+              <option key={i} value={d}>
+                {d}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="w-full">
+          <label
+            htmlFor="guest"
+            className="block mb-2 font-medium dark:text-white pl-0.5  uppercase"
+          >
+            Guests
+          </label>
+          <select
+            id="guest"
+            name="guest"
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full px-1"
+          >
+            <option defaultValue value="1">
+              1 Person
+            </option>
+            <option value="2">2 Person</option>
+            <option value="3">3 Person</option>
+          </select>
+        </div>
+        <div className="w-full">
+          <label
+            htmlFor="checkIn"
+            className="block mb-2 font-medium dark:text-white pl-0.5 uppercase"
+          >
+            Check In
+          </label>
+          <input
+            type="date"
+            name="checkIn"
+            min={checkInMinDate}
+            defaultValue={checkInMinDate}
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-2.5 w-full px-1"
+          />
+        </div>
+        <div className="w-full">
+          <label
+            htmlFor="checkOut"
+            className="block mb-2 font-medium dark:text-white pl-0.5  uppercase"
+          >
+            Check Out
+          </label>
+          <input
+            type="date"
+            name="checkOut"
+            min={checkOutMinDate}
+            defaultValue={checkOutMinDate}
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-2.5 w-full px-1"
+          />
+        </div>
+
+        <div className="flex items-end md:col-span-2 lg:col-span-1 mt-3 lg:mt-0">
+          <button
+            type="submit"
+            className="bg-yellow-400 py-3 rounded font-semibold w-full"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default SearchHotels;
+
+/* 
+<form
+        onSubmit={handleSubmit}
         className="flex flex-col lg:flex-row justify-between md:my-6"
       >
         <div className="lg:w-1/4 ">
           <label
             htmlFor="destination"
-            className="block mb-2 dark:text-white pl-1 uppercase text-sm md:text-base "
+            className="block mb-2 dark:text-white  uppercase text-sm md:text-base "
           >
             Select Destination
           </label>
@@ -57,10 +145,10 @@ const SearchHotels = () => {
             ))}
           </select>
         </div>
-        <div className="lg:w-1/5 ">
+        <div className="lg:w-1/5 md:w-1/3 ">
           <label
             htmlFor="checkIn"
-            className="block mb-2  dark:text-white pl-1 uppercase"
+            className="block mb-2  dark:text-white  uppercase"
           >
             Check In
           </label>
@@ -75,7 +163,7 @@ const SearchHotels = () => {
         <div className="lg:w-1/5">
           <label
             htmlFor="checkOut"
-            className="block mb-2  dark:text-white pl-1 uppercase"
+            className="block mb-2  dark:text-white  uppercase"
           >
             Check Out
           </label>
@@ -90,7 +178,7 @@ const SearchHotels = () => {
         <div className="lg:w-1/6">
           <label
             htmlFor="guest"
-            className="block mb-2 font-medium dark:text-white pl-1 uppercase"
+            className="block mb-2 font-medium dark:text-white  uppercase"
           >
             Guests
           </label>
@@ -106,6 +194,7 @@ const SearchHotels = () => {
             <option value="3">3 Person</option>
           </select>
         </div>
+
         <div className="flex items-end mt-3 lg:mb-1.5 ">
           <button
             type="submit"
@@ -115,74 +204,6 @@ const SearchHotels = () => {
           </button>
         </div>
       </form>
-    </div>
-  );
-};
-
-export default SearchHotels;
-
-/* 
-<div className="w-1/3">
-          <label
-            htmlFor="destination"
-            className="block mb-2 text-sm font-medium dark:text-white"
-          >
-            Select an option
-          </label>
-          <select
-            id="destination"
-            className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-slate-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-slate-500 outline-none"
-          >
-            <option
-              className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-              value="Cox's Bazar"
-            >
-              Cox's Bazar
-            </option>
-            <option value="Dhaka">Dhaka</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
-          </select>
-        </div>
-
-
-
-
-
-<div className="w-1/4">
-          <div className="p-2 flex justify-between bg-red-500">
-            Select Destination
-            <BiChevronDown size={20} />
-          </div>
-          <ul className="mt-2 max-h-60 overflow-y-auto">
-            <div className="flex justify-between items-center sticky top-0 bg-white py-1">
-              <AiOutlineSearch size={24} />
-              <input
-                onChange={(e) =>
-                  setDestinationValue(e.target.value.toLowerCase())
-                }
-                type="text"
-                placeholder="Search Destination"
-                className="placeholder:text-gray-700 outline-none w-[85%]"
-              />
-            </div>
-
-            {destination.map((d, i) => (
-              <li
-                key={i}
-                className={`p-2 text-sm hover:bg-sky-600 hover:text-white ${
-                  d.toLowerCase().startsWith(destinationValue)
-                    ? "block"
-                    : "hidden"
-                }`}
-              >
-                {d}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-
 
 
 */
