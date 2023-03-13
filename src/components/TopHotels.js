@@ -5,14 +5,14 @@ const arr = [1, 23, 4, 5, 67, 89];
 
 const TopHotels = () => {
   return (
-    <div className="h-max py-10">
-      <p className="pl-3 md:pl-8 lg:pl-10 py-3 font-semibold text-2xl">
+    <div className="h-max py-10 max-w-screen-xl mx-auto">
+      <p className="pl-3 md:pl-8 lg:pl-0 py-3 font-semibold text-2xl">
         Popular Hotels
       </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-3 md:px-8 lg:px-10 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 px-3 md:px-8 lg:px-0 gap-3">
         {arr.map((d, i) => {
           return (
-            <div className="border rounded-md hover:shadow-lg" key={i}>
+            <div className="border rounded-md hover:shadow-lg h-max" key={i}>
               <img
                 src="http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg"
                 alt=""
@@ -21,9 +21,7 @@ const TopHotels = () => {
               <div className="p-2 pr-0 h-1/2 relative ">
                 <div className=" pb-16">
                   <small>Executive Suite Hill View</small>
-                  <p className="font-semibold">
-                    Sea Pearl Beach Resort & Spa {d}{" "}
-                  </p>
+                  <p className="font-semibold">Sea Pearl Beach Resort & Spa</p>
                   <p>
                     2499 <small>BDT/Night</small>
                   </p>

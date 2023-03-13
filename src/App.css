@@ -1,8 +1,21 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(./font/BrownLight\ Regular.ttf);
+}
+@font-face {
+  font-family: mySecondFont;
+  src: url(./font/verdana-bold.ttf);
+}
+
 body {
   color: #1c3c6b;
-  background: #ebf0f43f;
+  background: #ebf0f4c5;
 }
 .header {
   background-image: url("./images/bg.webp");
   background-size: cover;
+}
+
+h3 {
+  font-family: mySecondFont;
 }

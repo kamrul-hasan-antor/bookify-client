@@ -29,11 +29,11 @@ const SearchHotels = () => {
     console.log(e.target.guest.value);
   };
   return (
-    <div className="bg-white w-4/5 lg:w-2/3 p-3 border border-slate-300 rounded">
+    <div className="bg-white w-11/12 md:w-5/6 max-w-screen-xl p-3 border border-slate-300 rounded">
       <div>
-        <p className="text-lg md:text-xl lg:text-2xl my-1 text-center mb-3">
+        <h3 className="text-lg md:text-xl lg:text-2xl my-1 text-center mb-3">
           Find your perfect place to stay at lowest prices.
-        </p>
+        </h3>
       </div>
       <form
         onSubmit={handleSubmit}
@@ -42,13 +42,13 @@ const SearchHotels = () => {
         <div className="lg:w-1/4 ">
           <label
             htmlFor="destination"
-            className="block mb-2 font-medium dark:text-white pl-1 uppercase text-sm md:text-base"
+            className="block mb-2 dark:text-white pl-1 uppercase text-sm md:text-base "
           >
             Select Destination
           </label>
           <select
             id="destination"
-            className="bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-slate-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-slate-500 outline-none "
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full"
           >
             {destination.map((d, i) => (
               <option key={i} value={d}>
@@ -60,7 +60,7 @@ const SearchHotels = () => {
         <div className="lg:w-1/5 ">
           <label
             htmlFor="checkIn"
-            className="block mb-2 font-medium dark:text-white pl-1 uppercase"
+            className="block mb-2  dark:text-white pl-1 uppercase"
           >
             Check In
           </label>
@@ -69,13 +69,13 @@ const SearchHotels = () => {
             name="checkIn"
             min={checkInMinDate}
             defaultValue={checkInMinDate}
-            className="bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-slate-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-slate-500 outline-none "
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-[8.5px] w-full"
           />
         </div>
         <div className="lg:w-1/5">
           <label
             htmlFor="checkOut"
-            className="block mb-2 font-medium dark:text-white pl-1 uppercase"
+            className="block mb-2  dark:text-white pl-1 uppercase"
           >
             Check Out
           </label>
@@ -84,7 +84,7 @@ const SearchHotels = () => {
             name="checkOut"
             min={checkOutMinDate}
             defaultValue={checkOutMinDate}
-            className="bg-gray-50 border border-gray-300 rounded-lg  block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-[8.5px] w-full"
           />
         </div>
         <div className="lg:w-1/6">
@@ -97,7 +97,7 @@ const SearchHotels = () => {
           <select
             id="guest"
             name="guest"
-            className="bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-slate-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-slate-500 outline-none"
+            className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full"
           >
             <option defaultValue value="1">
               1 Person
@@ -109,7 +109,7 @@ const SearchHotels = () => {
         <div className="flex items-end mt-3 lg:mb-1.5 ">
           <button
             type="submit"
-            className="bg-yellow-400 px-4 py-2.5 rounded font-semibold w-full"
+            className="bg-yellow-400 px-8 py-2.5 rounded font-semibold w-full"
           >
             Search
           </button>

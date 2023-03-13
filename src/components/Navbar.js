@@ -26,8 +26,8 @@ const Navbar = () => {
       } 
       } `}
     >
-      <div className="relative flex justify-between items-center px-2 lg:px-12 xl:px-20 md:h-[80px] h-[70px]">
-        <div className="px-2">
+      <div className="relative flex justify-between items-center md:h-[80px] h-[70px] max-w-screen-xl mx-auto">
+        <div className="">
           {open ? (
             <GiHamburgerMenu
               onClick={() => setOpen(!open)}
@@ -48,7 +48,7 @@ const Navbar = () => {
           </div>
           <div>
             <ul
-              className={`hidden lg:flex items-center md:static w-full px-2 pb-5 pt-2 md:py-0 `}
+              className={`hidden lg:flex justify-end items-center md:static w-full pb-5 pt-2 md:py-0 `}
             >
               <li className="md:px-4 font-semibold nav_list py-1 md:py-0 ">
                 <Link className="" to="/">
@@ -61,10 +61,9 @@ const Navbar = () => {
               <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
                 <a href="#services">Services</a>
               </li>
-              <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
+              <li className="md:pl-4 font-semibold nav_list py-1 md:py-0">
                 <a href="#contact">Contact</a>
               </li>
-              <li className="md:px-4 font-semibold nav_list py-1 md:py-0"></li>
             </ul>
           </div>
         </div>
