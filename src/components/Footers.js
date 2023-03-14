@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footers = () => {
-  return <div>Footers</div>;
+  return <div className="h-screen">Footers</div>;
 };
 
 export default Footers;
