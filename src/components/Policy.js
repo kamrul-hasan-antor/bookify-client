@@ -1,6 +1,10 @@
 import React from "react";
-import { AiFillCarryOut } from "react-icons/ai";
-import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
+import { BsFileEarmarkRuled } from "react-icons/bs";
+import { MdOutlineChildCare } from "react-icons/md";
+import { TbDog } from "react-icons/tb";
+import { FiInfo } from "react-icons/fi";
+import { RxCrossCircled } from "react-icons/rx";
+import { RxCheckCircled } from "react-icons/rx";
 const Policy = () => {
   return (
     <div className="mt-10">
@@ -11,7 +15,7 @@ const Policy = () => {
         <div className="flex">
           <div className="w-1/2 lg:w-1/5">
             <p className="flex items-center">
-              <AiFillCarryOut size={18} className="mr-1" /> Check In
+              <RxCheckCircled size={18} className="mr-1" /> Check In
             </p>
           </div>
           <div className="w-4/5">
@@ -21,7 +25,7 @@ const Policy = () => {
         <div className="flex mt-3">
           <div className="w-1/2 lg:w-1/5">
             <p className="flex items-center">
-              <AiFillCarryOut size={18} className="mr-1" /> Check Out
+              <RxCrossCircled size={18} className="mr-1" /> Check Out
             </p>
           </div>
           <div className="w-4/5">
@@ -31,39 +35,22 @@ const Policy = () => {
         <div className="flex mt-3">
           <div className="w-1/2 lg:w-1/5">
             <p className="flex items-center">
-              <BsFillFileEarmarkRuledFill size={18} className="mr-1" />{" "}
-              Instructions
+              <BsFileEarmarkRuled size={18} className="mr-1" /> Instructions
             </p>
           </div>
           <div className="w-4/5">
-            <ul className="block list-disc">
-              <li>
-                Extra-person charges may apply and vary depending on property
-                policy
-              </li>
-              <li>
-                Government-issued photo identification and a credit card, debit
-                card, or cash deposit may be required at check-in for incidental
-                charges
-              </li>
-            </ul>
+            <p className="block list-disc">
+              Extra-person charges may apply and vary depending on property
+              policy Government-issued photo identification and a credit card,
+              debit card, or cash deposit may be required at check-in for
+              incidental charges
+            </p>
           </div>
         </div>
         <div className="flex mt-3">
           <div className="w-1/2 lg:w-1/5">
             <p className="flex items-center">
-              <BsFillFileEarmarkRuledFill size={18} className="mr-1" /> Special
-              Instructions
-            </p>
-          </div>
-          <div className="w-4/5">
-            <p>Front desk staff will greet guests on arrival.</p>
-          </div>
-        </div>
-        <div className="flex mt-3">
-          <div className="w-1/2 lg:w-1/5">
-            <p className="flex items-center">
-              <BsFillFileEarmarkRuledFill size={18} className="mr-1" />
+              <MdOutlineChildCare size={18} className="mr-1" />
               Child Policy
             </p>
           </div>
@@ -74,12 +61,26 @@ const Policy = () => {
         <div className="flex mt-3">
           <div className="w-1/2 lg:w-1/5">
             <p className="flex items-center">
-              <BsFillFileEarmarkRuledFill size={18} className="mr-1" />
+              <TbDog size={18} className="mr-1" />
               Pet Policy
             </p>
           </div>
           <div className="w-4/5">
             <p>Not Allowed</p>
+          </div>
+        </div>
+        <div className="flex mt-3">
+          <div className="w-1/2 lg:w-1/5">
+            <p className="flex items-center">
+              <FiInfo size={18} className="mr-1" />
+              House Rules
+            </p>
+          </div>
+          <div className="w-4/5">
+            <p>
+              Each guest has to present a copy of their valid NID/other forms of
+              identification documents during check-in.{" "}
+            </p>
           </div>
         </div>
       </div>
