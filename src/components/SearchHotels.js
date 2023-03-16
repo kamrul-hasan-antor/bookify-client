@@ -110,7 +110,7 @@ const SearchHotels = () => {
         <div className="flex items-end md:col-span-2 lg:col-span-1 mt-3 lg:mt-0">
           <button
             type="submit"
-            className="bg-yellow-400 py-3 rounded font-semibold w-full"
+            className="bg-[#1c3c6b] text-white py-3 rounded font-semibold w-full"
           >
             Search
           </button>

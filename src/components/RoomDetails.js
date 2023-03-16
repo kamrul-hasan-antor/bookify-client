@@ -4,10 +4,11 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import { GiKnifeFork } from "react-icons/gi";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
+import Coupon from "./Coupon";
 const RoomDetails = () => {
   return (
-    <div className="col-span-3 ">
-      <h4 className="bg-[#ecf3fe] p-4 py-3 text-lg font-semibold rounded-md border border-b-0 rounded-b-none">
+    <div className="col-span-2">
+      <h4 className="bg-[#ecf3fe] p-4 py-3 text-lg font-semibold rounded-md border border-b-0 rounded-b-none ">
         Room Details
       </h4>
       <div className="p-4 flex flex-col lg:flex-row bg-white border border-t-0 rounded-b-md mb-10">
@@ -35,7 +36,7 @@ const RoomDetails = () => {
             <small className="bg-[#ecf3fe] font-semibold p-2 rounded-sm">
               Option 1
             </small>
-            <small className="bg-orange-500 text-white font-semibold p-2 rounded-sm">
+            <small className="bg-orange-500 font-semibold p-2 rounded-sm text-white">
               62% off
             </small>
           </div>
@@ -90,7 +91,7 @@ const RoomDetails = () => {
                 <h4 className="font-semibold text-lg lg:text-2xl">BDT 5270</h4>
                 <p>Tax & Fees: 10% </p>
               </div>
-              <button className="bg-yellow-400 px-3 py-2 rounded font-semibold mt-3">
+              <button className="bg-[#1c3c6b] text-white px-3 py-2 rounded font-semibold mt-3">
                 Add Room
               </button>
             </div>
@@ -99,7 +100,7 @@ const RoomDetails = () => {
       </div>
 
       {/* anther room */}
-      <div className="p-4 flex flex-col lg:flex-row bg-white border border-t-0 rounded-b-md">
+      <div className="p-4 flex flex-col lg:flex-row bg-white border border-t-0 rounded-b-md mb-10">
         {/* Left side */}
         <div className="lg:w-2/5">
           <img
@@ -124,7 +125,7 @@ const RoomDetails = () => {
             <small className="bg-[#ecf3fe] font-semibold p-2 rounded-sm">
               Option 1
             </small>
-            <small className="bg-orange-500 text-white font-semibold p-2 rounded-sm">
+            <small className="bg-orange-500 font-semibold p-2 rounded-sm">
               62% off
             </small>
           </div>
@@ -186,6 +187,8 @@ const RoomDetails = () => {
           </div>
         </div>
       </div>
+
+      <Coupon />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Cart from "../../components/Cart";
+import Facilities from "../../components/Facilities";
+import Policy from "../../components/Policy";
 import RoomDetails from "../../components/RoomDetails";
 
 const HotelDetail = () => {
@@ -12,7 +14,7 @@ const HotelDetail = () => {
           <img
             src="https://i.travelapi.com/hotels/33000000/32420000/32415500/32415417/5952e0af_z.jpg"
             alt=""
-            className="rounded-md"
+            className="rounded-md h-full"
           />
         </div>
         <div className="md:w-[45%] md:pl-4">
@@ -118,10 +120,12 @@ const HotelDetail = () => {
       </div>
 
       {/* Room Details and Cart */}
-      <div className="grid lg:grid-cols-4 mt-10 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-3 mt-10 relative">
         <RoomDetails />
         <Cart />
       </div>
+      <Facilities />
+      <Policy />
     </div>
   );
 };
