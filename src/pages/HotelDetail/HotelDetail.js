@@ -4,6 +4,7 @@ import Cart from "../../components/Cart";
 import Facilities from "../../components/Facilities";
 import Policy from "../../components/Policy";
 import RoomDetails from "../../components/RoomDetails";
+import SelectedFacilities from "../../components/SelectedFacilities";
 
 const HotelDetail = () => {
   return (
@@ -89,7 +90,7 @@ const HotelDetail = () => {
       {/* -------Details and Rooms------- */}
       {/* Hotel Description */}
       <div className="bg-white mt-10 rounded-md border">
-        <h4 className="bg-[#ecf3fe]  p-4 text-lg font-semibold">
+        <h4 className="bg-[#ecf3fe]  p-4 text-lg font-semibold rounded-t-md">
           Hotel Description
         </h4>
         <div className="flex pl-4 pt-2">
@@ -126,6 +127,8 @@ const HotelDetail = () => {
       </div>
       <Facilities />
       <Policy />
+
+      <SelectedFacilities />
     </div>
   );
 };

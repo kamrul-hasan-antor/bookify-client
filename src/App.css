@@ -8,7 +8,7 @@
 }
 
 body {
-  color: #1c3c6b;
+  /* color: #1c3c6b; */
   background: #ebf0f4c5;
 }
 .header {
@@ -24,4 +24,13 @@ p {
 }
 small {
   color: #6b6b7b;
+}
+h4,
+a,
+h3 {
+  color: #1c3c6b;
+}
+
+.border {
+  border-color: rgb(222, 222, 222);
 }

@@ -64,7 +64,7 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        <button className="rounded-b-md bg-[#2a5699] w-full py-3 font-semibold flex justify-between px-4 text-lg text-white">
+        <button className="rounded-b-md bg-[#2a5699] hover:bg-[#1c3c6b] w-full py-3 font-semibold flex justify-between px-4 text-lg text-white">
           Continue
           <p className="text-white">
             2000

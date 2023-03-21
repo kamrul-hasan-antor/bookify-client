@@ -91,7 +91,7 @@ const RoomDetails = () => {
                 <h4 className="font-semibold text-lg lg:text-2xl">BDT 5270</h4>
                 <p>Tax & Fees: 10% </p>
               </div>
-              <button className="bg-[#1c3c6b] text-white px-3 py-2 rounded font-semibold mt-3">
+              <button className="bg-[#1c3c6b] hover:bg-[#2a5699] text-white px-3 py-2 rounded font-semibold mt-3">
                 Add Room
               </button>
             </div>
