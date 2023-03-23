@@ -1,16 +1,26 @@
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
-const HotelResult = () => {
+const HotelResult = ({ setShowFilter }) => {
+  const handleShowFilter = () => {
+    setShowFilter(true);
+  };
+
   return (
     <div>
       <div className="bg-white flex py-3 px-3.5 justify-between items-center border rounded">
-        <h4 className="font-semibold">38 properties found </h4>
-        <div className="">
+        <h4 className="font-semibold">10 results</h4>
+        <div className="flex items-center">
+          <button
+            className={`bg-gray-50 border border-gray-300 py-2 px-6 rounded lg:hidden`}
+            onClick={handleShowFilter}
+          >
+            Filters
+          </button>
           <select
             id="guest"
             name="guest"
-            className="bg-gray-50 border border-gray-300 block py-2 px-4 rounded"
+            className="bg-gray-50 border border-gray-300 block py-2 px-4 rounded ml-3"
           >
             <option defaultValue value="popularity">
               Popularity
