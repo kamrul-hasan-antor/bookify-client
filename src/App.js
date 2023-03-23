@@ -4,6 +4,8 @@ import Home from "./pages/Home/Home";
 import Main from "./pages/Main/Main";
 import HotelDetails from "./pages/HotelDetail/HotelDetail";
 import "./App.css";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -22,6 +24,14 @@ const App = () => {
         {
           path: "/details/:id",
           element: <HotelDetails />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
         },
       ],
     },

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCrossCircled } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [changeBg, setChangeBg] = useState(false);
-
+  const { logOut, user } = useContext(AuthContext);
+  console.log(user);
   const location = useLocation().pathname;
 
   const changeBackground = () => {
@@ -16,8 +18,13 @@ const Navbar = () => {
       setChangeBg(false);
     }
   };
-
   window.addEventListener("scroll", changeBackground);
+
+  const handleSignOut = () => {
+    logOut().then(() => {
+      console.log("signed out");
+    });
+  };
 
   return (
     <div
@@ -61,9 +68,39 @@ const Navbar = () => {
               <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
                 <a href="#services">Services</a>
               </li>
-              <li className="md:pl-4 font-semibold nav_list py-1 md:py-0">
+              <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
                 <a href="#contact">Contact</a>
               </li>
+              {user?.email ? (
+                <li
+                  onClick={handleSignOut}
+                  className="md:pl-4 font-semibold nav_list py-1 md:py-0"
+                >
+                  <Link to="/">Sign out</Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {user?.email ? (
+                <li className="md:pl-4 font-semibold nav_list py-1 md:py-0">
+                  <Link to="/">
+                    <img
+                      src="https://avatars.githubusercontent.com/u/76778073?s=400&u=3fb2b92539caf07439b0f7dab5024b0db208256a&v=4"
+                      alt=""
+                      className="w-10 h-10 rounded-full"
+                    />
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li className="md:pl-4 font-semibold nav_list py-1 md:py-0">
+                    <Link to="/register">Register</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
@@ -102,6 +139,9 @@ const Navbar = () => {
           </li>
           <li className="py-3">
             <Link to="/">Contact</Link>
+          </li>
+          <li className="py-3">
+            <Link to="/">Sign out</Link>
           </li>
         </ul>
       </div>
