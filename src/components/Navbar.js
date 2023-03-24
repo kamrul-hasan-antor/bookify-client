@@ -8,7 +8,6 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [changeBg, setChangeBg] = useState(false);
   const { logOut, user } = useContext(AuthContext);
-  console.log(user);
   const location = useLocation().pathname;
 
   const changeBackground = () => {
@@ -57,32 +56,40 @@ const Navbar = () => {
             <ul
               className={`hidden lg:flex justify-end items-center md:static w-full pb-5 pt-2 md:py-0 `}
             >
-              <li className="md:px-4 font-semibold nav_list py-1 md:py-0 ">
+              <li className="md:px-3 font-semibold nav_list py-1 md:py-0 ">
                 <Link className="" to="/">
                   Home
                 </Link>
               </li>
-              <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
+              <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                 <Link to="/hotels">Hotels</Link>
               </li>
-              <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
+              <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                 <a href="#services">Services</a>
               </li>
-              <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
+              <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                 <a href="#contact">Contact</a>
               </li>
+              {user?.email === "kamrulhasan.antor95@gmail.com" ? (
+                <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
+                  <Link to="/admin">Admin</Link>
+                </li>
+              ) : (
+                ""
+              )}
               {user?.email ? (
                 <li
                   onClick={handleSignOut}
-                  className="md:pl-4 font-semibold nav_list py-1 md:py-0"
+                  className="md:px-3 font-semibold nav_list py-1 md:py-0"
                 >
                   <Link to="/">Sign out</Link>
                 </li>
               ) : (
                 ""
               )}
+
               {user?.email ? (
-                <li className="md:pl-4 font-semibold nav_list py-1 md:py-0">
+                <li className="md:pl-3 font-semibold nav_list py-1 md:py-0">
                   <Link to="/">
                     <img
                       src="https://avatars.githubusercontent.com/u/76778073?s=400&u=3fb2b92539caf07439b0f7dab5024b0db208256a&v=4"
@@ -93,10 +100,10 @@ const Navbar = () => {
                 </li>
               ) : (
                 <>
-                  <li className="md:px-4 font-semibold nav_list py-1 md:py-0">
+                  <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                     <Link to="/login">Login</Link>
                   </li>
-                  <li className="md:pl-4 font-semibold nav_list py-1 md:py-0">
+                  <li className="md:pl-3 font-semibold nav_list py-1 md:py-0">
                     <Link to="/register">Register</Link>
                   </li>
                 </>
@@ -140,9 +147,33 @@ const Navbar = () => {
           <li className="py-3">
             <Link to="/">Contact</Link>
           </li>
-          <li className="py-3">
-            <Link to="/">Sign out</Link>
-          </li>
+          {user?.email ? (
+            <li onClick={handleSignOut} className="py-3">
+              <Link to="/">Sign out</Link>
+            </li>
+          ) : (
+            ""
+          )}
+          {user?.email ? (
+            <li className="py-3">
+              <Link to="/">
+                <img
+                  src="https://avatars.githubusercontent.com/u/76778073?s=400&u=3fb2b92539caf07439b0f7dab5024b0db208256a&v=4"
+                  alt=""
+                  className="w-10 h-10 rounded-full"
+                />
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li className="py-3">
+                <Link to="/login">Login</Link>
+              </li>
+              <li className="py-3">
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

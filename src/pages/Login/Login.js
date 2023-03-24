@@ -87,7 +87,7 @@ const Login = () => {
               type="submit"
               className="bg-[#1c3c6b] text-white py-3 rounded font-semibold w-full lg:w-1/2 mx-auto uppercase"
             >
-              register now
+              Log In
             </button>
           </div>
         </form>

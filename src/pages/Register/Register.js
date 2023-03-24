@@ -1,5 +1,5 @@
 import { updateProfile } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -33,7 +33,6 @@ const Register = () => {
       address,
       age,
       gender,
-      password,
     };
     console.log(user);
     createUser(email, password)
@@ -43,8 +42,18 @@ const Register = () => {
           photoURL: photo,
           phoneNumber: phoneNumber,
         });
-        const user = res.user;
-        console.log(user);
+
+        fetch("http://localhost:5000/addUsers", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            form.reset();
+          });
+        form.reset();
+        navigate(from, { replace: true });
         navigate(from, { replace: true });
       })
       .catch((error) => {

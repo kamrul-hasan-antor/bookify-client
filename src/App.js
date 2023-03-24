@@ -6,6 +6,9 @@ import HotelDetails from "./pages/HotelDetail/HotelDetail";
 import "./App.css";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import Admin from "./pages/Admin/Admin";
+import AllUsers from "./pages/Admin/AllUsers";
+import AddHotels from "./pages/Admin/AddHotels";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -32,6 +35,20 @@ const App = () => {
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/admin",
+          element: <Admin />,
+          children: [
+            {
+              path: "/admin/allUsers",
+              element: <AllUsers />,
+            },
+            {
+              path: "/admin/addHotels",
+              element: <AddHotels />,
+            },
+          ],
         },
       ],
     },
