@@ -29,7 +29,7 @@ const SearchHotels = () => {
     console.log(e.target.guest.value);
   };
   return (
-    <div className="bg-white w-11/12 md:w-5/6 max-w-screen-xl p-3 border border-slate-300 rounded">
+    <div className="bg-white w-11/12 md:w-5/6 max-w-screen-2xl p-3 border border-slate-300 rounded">
       <div>
         <h3 className="text-lg md:text-xl lg:text-2xl my-1 text-center mb-3">
           Find your perfect place to stay at lowest prices.

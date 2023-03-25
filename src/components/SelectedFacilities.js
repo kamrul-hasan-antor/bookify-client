@@ -1,54 +1,92 @@
 import { useState } from "react";
 
 function SelectedFacilities() {
-  const [selectedFruits, setSelectedFruits] = useState([]);
+  const [businessFacilities, setBusinessFacilities] = useState([]);
+  const [fitnessFacilities, setFitnessFacilities] = useState([]);
 
-  const handleFruitChange = (e) => {
-    const { value, checked } = e.target;
+  const handleFacilityChange = (event) => {
+    const { checked, value, name } = event.target;
     if (checked) {
-      setSelectedFruits([...selectedFruits, value]);
+      if (name === "business") {
+        setBusinessFacilities([...businessFacilities, value]);
+      } else {
+        setFitnessFacilities([...fitnessFacilities, value]);
+      }
     } else {
-      setSelectedFruits(selectedFruits.filter((fruit) => fruit !== value));
+      if (name === "business") {
+        setBusinessFacilities(
+          businessFacilities.filter((facility) => facility !== value)
+        );
+      } else {
+        setFitnessFacilities(
+          fitnessFacilities.filter((facility) => facility !== value)
+        );
+      }
     }
   };
 
-  console.log(selectedFruits);
-
+  console.log(fitnessFacilities);
+  console.log(businessFacilities);
   return (
     <div>
+      <h3>Business Facilities</h3>
       <label>
         <input
           type="checkbox"
-          name="apple"
-          value="apple"
-          checked={selectedFruits.includes("apple")}
-          onChange={handleFruitChange}
+          name="business"
+          value="good"
+          onChange={handleFacilityChange}
         />
-        Apple
+        Good
       </label>
       <label>
         <input
           type="checkbox"
-          name="orange"
-          value="orange"
-          checked={selectedFruits.includes("orange")}
-          onChange={handleFruitChange}
+          name="business"
+          value="bad"
+          onChange={handleFacilityChange}
         />
-        Orange
+        Bad
       </label>
       <label>
         <input
           type="checkbox"
-          name="guava"
-          value="guava"
-          checked={selectedFruits.includes("guava")}
-          onChange={handleFruitChange}
+          name="business"
+          value="best"
+          onChange={handleFacilityChange}
         />
-        Guava
+        Best
       </label>
-      <p>Selected fruits: {selectedFruits.join(", ")}</p>
+
+      <h3>Fitness Facilities</h3>
+      <label>
+        <input
+          type="checkbox"
+          name="fitness"
+          value="gym"
+          onChange={handleFacilityChange}
+        />
+        Gym
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="fitness"
+          value="pool"
+          onChange={handleFacilityChange}
+        />
+        Pool
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="fitness"
+          value="spa"
+          onChange={handleFacilityChange}
+        />
+        Spa
+      </label>
     </div>
   );
 }
-
 export default SelectedFacilities;

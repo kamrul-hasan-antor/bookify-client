@@ -164,19 +164,19 @@ const Register = () => {
                 className="block uppercase text-sm font-semibold mb-2"
                 htmlFor="grid-img"
               >
-                Image
+                Images
               </label>
               <input
-                className="file:overflow-hidden file:border-0 file:bg-gray-100 file:px-4 file:py-[11px] block w-full border rounded focus:outline-none bg-white focus:border-[#1c3c6b]"
+                className="file:overflow-hidden file:border-0 file:bg-gray-100 file:px-4 w-full border rounded focus:outline-none py1 file:h-12 bg-white focus:border-[#1c3c6b] "
                 type="file"
-                name="photo"
+                name="hotelImg"
                 id="grid-img"
                 accept="image/*"
                 multiple
               />
             </div>
           </div>
-          {/* phone, img, gender */}
+          {/* phone, age, gender */}
           <div className="flex flex-wrap -mx-3">
             <div className="w-full md:w-1/3 px-3 mb-3">
               <label

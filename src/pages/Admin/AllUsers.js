@@ -9,10 +9,9 @@ const AllUsers = () => {
       .then((data) => setUsers(data));
   }, []);
 
-  console.log(users);
-
   return (
     <div>
+      <h1>users</h1>
       {users.map((user, i) => {
         const { fullName } = user;
         return (
@@ -21,6 +20,7 @@ const AllUsers = () => {
           </div>
         );
       })}
+      lorem500
     </div>
   );
 };

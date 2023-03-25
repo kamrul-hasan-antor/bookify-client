@@ -5,7 +5,7 @@ const arr = [1, 23, 4, 5, 67, 89];
 
 const TopHotels = () => {
   return (
-    <div className="h-max py-10 lg:w-5/6 max-w-screen-xl mx-auto">
+    <div className="h-max py-10 w-full xl:px-4 2xl:px-0 max-w-screen-2xl mx-auto">
       <p className="pl-3 md:pl-8 lg:pl-0 py-3 font-semibold text-2xl">
         Popular Hotels
       </p>
