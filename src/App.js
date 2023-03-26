@@ -9,6 +9,9 @@ import Login from "./pages/Login/Login";
 import Admin from "./pages/Admin/Admin";
 import AllUsers from "./pages/Admin/AllUsers";
 import AddHotels from "./pages/Admin/AddHotels";
+import AddedHotels from "./pages/Admin/AddedHotels";
+import Dashboard from "./pages/Admin/Dashboard";
+import AddRooms from "./pages/Admin/AddRooms";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -47,6 +50,18 @@ const App = () => {
             {
               path: "/admin/addHotels",
               element: <AddHotels />,
+            },
+            {
+              path: "/admin/addedHotels",
+              element: <AddedHotels />,
+            },
+            {
+              path: "/admin/dashboard",
+              element: <Dashboard />,
+            },
+            {
+              path: "/admin/addRoom",
+              element: <AddRooms />,
             },
           ],
         },

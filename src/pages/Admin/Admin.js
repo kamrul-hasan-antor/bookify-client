@@ -15,14 +15,14 @@ const Admin = () => {
         <div
           className={`lg:w-1/6 top bg-white ${
             open ? "left-0" : "-left-full"
-          } absolute lg:static h-full lg:h-auto lg:min-h-screen duration-500 ease-in lg:transition-none top-2 border-r`}
+          } absolute lg:static h-full lg:h-auto lg:min-h-screen duration-500 ease-in w-1/2 lg:transition-none top-2 border-r`}
         >
           <Sidebar />
         </div>
         <div className="bg-white w-full min-h-screen  lg:w-5/6">
-          <div className="flex justify-end p-2 lg:hidden bg-red-400">
+          <div className="flex justify-end p-2 lg:hidden ">
             <button onClick={handleOpen}>
-              {open ? <RxCross1 size={24} /> : <BsJustifyRight size={24} />}
+              {open ? <RxCross1 size={26} /> : <BsJustifyRight size={28} />}
             </button>
           </div>
           <Outlet />

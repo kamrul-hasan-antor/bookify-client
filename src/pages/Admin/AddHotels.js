@@ -25,6 +25,9 @@ const AddHotels = () => {
   const [mediaFacilities, setMediaFacilities] = useState([]);
   const [transportFacilities, setTransportFacilities] = useState([]);
   const [othersFacilities, setOthersFacilities] = useState([]);
+  const [images, setImages] = useState([]);
+
+  const imgBbApi = process.env.REACT_APP_API_URL;
 
   const handleFacilityChange = (event) => {
     const { checked, value, name } = event.target;
@@ -89,12 +92,31 @@ const AddHotels = () => {
     }
   };
 
+  const handleImageUpload = async (e) => {
+    const photos = e.target.files;
+
+    for (const file of photos) {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=${imgBbApi}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      setImages((prevState) => [...prevState, data.data.display_url]);
+    }
+  };
+
   const handleAddHotel = (e) => {
     e.preventDefault();
 
     const form = e.target;
     const hotelName = form.hotelName.value;
-    const photo = form.photo.value;
     const hotelPhoneNumber = form.hotelPhoneNumber.value;
     const address = form.address.value;
     const upazila = form.upazila.value;
@@ -110,7 +132,7 @@ const AddHotels = () => {
 
     const hotel = {
       hotelName,
-      photo,
+      images,
       hotelPhoneNumber,
       address,
       upazila,
@@ -133,7 +155,6 @@ const AddHotels = () => {
         othersFacilities,
       },
     };
-
     fetch("http://localhost:5000/addHotels", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -146,7 +167,10 @@ const AddHotels = () => {
   };
 
   return (
-    <div className="py-6">
+    <div className="pb-6 pt-2">
+      <p className="px-5 lg:ml-1 text-2xl font-bold uppercase mb-3 pb-3 border-b">
+        Add Hotels
+      </p>
       <form onSubmit={handleAddHotel}>
         <div className="flex flex-wrap px-1 lg:px-3">
           {/* name */}
@@ -175,7 +199,7 @@ const AddHotels = () => {
             >
               Image
             </label>
-            {/* <input
+            <input
               className="file:overflow-hidden file:border-0 file:bg-gray-100 file:px-4 w-full border rounded focus:outline-none py1 file:h-12 bg-white focus:border-[#1c3c6b] "
               type="file"
               name="photo"
@@ -183,14 +207,7 @@ const AddHotels = () => {
               accept="image/*"
               multiple
               required
-            /> */}
-
-            <input
-              className="appearance-none block w-full border border-red-500 rounded py-3 px-4 focus:outline-none focus:border-[#1c3c6b]"
-              id="grid-img"
-              type="text"
-              placeholder="Image Link"
-              name="photo"
+              onChange={handleImageUpload}
             />
           </div>
 
@@ -631,6 +648,7 @@ const AddHotels = () => {
               required
             />
           </div>
+          
           <div className="px-3">
             <button
               type="submit"
