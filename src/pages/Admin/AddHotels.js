@@ -95,20 +95,27 @@ const AddHotels = () => {
   const handleImageUpload = async (e) => {
     const photos = e.target.files;
 
-    for (const file of photos) {
-      const formData = new FormData();
-      formData.append("image", file);
+    console.log(photos.length);
 
-      const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${imgBbApi}`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+    if (photos.length < 5) {
+      for (const file of photos) {
+        const formData = new FormData();
+        formData.append("image", file);
+        const response = await fetch(
+          `https://api.imgbb.com/1/upload?key=${imgBbApi}`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
-      const data = await response.json();
-      setImages((prevState) => [...prevState, data.data.display_url]);
+        const data = await response.json();
+        console.log(data);
+        setImages((prevState) => [...prevState, data.data.display_url]);
+      }
+    } else {
+      alert("you can't add more than 4 images.");
+      return;
     }
   };
 
@@ -198,6 +205,7 @@ const AddHotels = () => {
               htmlFor="grid-img"
             >
               Image
+              <small className="pl-2 text-xs underline">maximum 4 images</small>
             </label>
             <input
               className="file:overflow-hidden file:border-0 file:bg-gray-100 file:px-4 w-full border rounded focus:outline-none py1 file:h-12 bg-white focus:border-[#1c3c6b] "
@@ -648,7 +656,7 @@ const AddHotels = () => {
               required
             />
           </div>
-          
+
           <div className="px-3">
             <button
               type="submit"
