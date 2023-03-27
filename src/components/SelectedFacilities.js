@@ -156,7 +156,7 @@ const SelectedFacilities = () => {
         value={selectedHotel._id}
         onChange={handleHotelChange}
       >
-        <option value="">--Select a hotel--</option>
+        <option value="">--Select a hotel-</option>
         {hotels.map((hotel) => (
           <option key={hotel._id} value={hotel._id}>
             {hotel.hotelName}
