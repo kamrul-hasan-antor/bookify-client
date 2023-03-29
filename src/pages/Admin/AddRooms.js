@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 import { roomFacilities } from "./facilitiesData";
 
 const AddRooms = () => {
-  const [hotels, setHotels] = useState([]);
+  const hotels = useLoaderData();
   const [roomF, setRoomF] = useState([]);
   const [images, setImages] = useState("");
   const [selectedHotel, setSelectedHotel] = useState({
@@ -11,12 +12,6 @@ const AddRooms = () => {
     _id: "",
   });
   const imgBbApi = process.env.REACT_APP_API_URL;
-
-  useEffect(() => {
-    fetch("http://localhost:5000/hotelName")
-      .then((res) => res.json())
-      .then((data) => setHotels(data));
-  }, []);
 
   const handleRoomFacilities = (e) => {
     const { checked, value } = e.target;
@@ -66,8 +61,6 @@ const AddRooms = () => {
       totalRoom,
       hotleId,
     };
-    console.log(room);
-    // /:hotelId/:hotelName/rooms
 
     fetch(`http://localhost:5000/addRooms`, {
       method: "POST",

@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../context/SearchProvider";
 
 const destination = [
   "Cox's Bazar",
@@ -13,7 +15,9 @@ const destination = [
 const SearchHotels = () => {
   const [checkInMinDate, setCheckInMinDate] = useState("");
   const [checkOutMinDate, setCheckOutMinDate] = useState("");
-
+  // const [destination, setDestination] = useState("");
+  const { setSearchResult } = useContext(SearchContext);
+  const navigate = useNavigate("");
   useEffect(() => {
     const date = new Date();
     const today = date.toISOString().split("T")[0];
@@ -26,8 +30,21 @@ const SearchHotels = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.guest.value);
+    const form = e.target;
+    const district = form.district.value;
+    const guest = form.guest.value;
+    const checkIn = form.checkIn.value;
+    const checkOut = form.checkOut.value;
+    const search = {
+      district,
+      guest,
+      checkIn,
+      checkOut,
+    };
+    setSearchResult(search);
+    navigate("/hotels");
   };
+
   return (
     <div className="bg-white w-11/12 md:w-5/6 max-w-screen-2xl p-3 border border-slate-300 rounded">
       <div>
@@ -48,6 +65,7 @@ const SearchHotels = () => {
           </label>
           <select
             id="destination"
+            name="district"
             className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full px-1"
           >
             {destination.map((d, i) => (
@@ -57,6 +75,8 @@ const SearchHotels = () => {
             ))}
           </select>
         </div>
+
+        {/* Number of gurest */}
         <div className="w-full">
           <label
             htmlFor="guest"
@@ -76,6 +96,8 @@ const SearchHotels = () => {
             <option value="3">3 Person</option>
           </select>
         </div>
+
+        {/* check In */}
         <div className="w-full">
           <label
             htmlFor="checkIn"
@@ -91,6 +113,8 @@ const SearchHotels = () => {
             className="bg-gray-50 border border-gray-300 rounded-lg block p-2.5 w-full px-1"
           />
         </div>
+
+        {/* check In */}
         <div className="w-full">
           <label
             htmlFor="checkOut"
@@ -107,7 +131,7 @@ const SearchHotels = () => {
           />
         </div>
 
-        <div className="flex items-end md:col-span-2 lg:col-span-1 mt-3 lg:mt-0">
+        <div className="flex items-end md:col-span-2 lg:col-span-1 mt-3 lg:mt-0 lg:mb-1">
           <button
             type="submit"
             className="bg-[#1c3c6b] text-white py-3 rounded font-semibold w-full"
@@ -121,89 +145,3 @@ const SearchHotels = () => {
 };
 
 export default SearchHotels;
-
-/* 
-<form
-        onSubmit={handleSubmit}
-        className="flex flex-col lg:flex-row justify-between md:my-6"
-      >
-        <div className="lg:w-1/4 ">
-          <label
-            htmlFor="destination"
-            className="block mb-2 dark:text-white  uppercase text-sm md:text-base "
-          >
-            Select Destination
-          </label>
-          <select
-            id="destination"
-            className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full"
-          >
-            {destination.map((d, i) => (
-              <option key={i} value={d}>
-                {d}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="lg:w-1/5 md:w-1/3 ">
-          <label
-            htmlFor="checkIn"
-            className="block mb-2  dark:text-white  uppercase"
-          >
-            Check In
-          </label>
-          <input
-            type="date"
-            name="checkIn"
-            min={checkInMinDate}
-            defaultValue={checkInMinDate}
-            className="bg-gray-50 border border-gray-300 rounded-lg block p-[8.5px] w-full"
-          />
-        </div>
-        <div className="lg:w-1/5">
-          <label
-            htmlFor="checkOut"
-            className="block mb-2  dark:text-white  uppercase"
-          >
-            Check Out
-          </label>
-          <input
-            type="date"
-            name="checkOut"
-            min={checkOutMinDate}
-            defaultValue={checkOutMinDate}
-            className="bg-gray-50 border border-gray-300 rounded-lg block p-[8.5px] w-full"
-          />
-        </div>
-        <div className="lg:w-1/6">
-          <label
-            htmlFor="guest"
-            className="block mb-2 font-medium dark:text-white  uppercase"
-          >
-            Guests
-          </label>
-          <select
-            id="guest"
-            name="guest"
-            className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full"
-          >
-            <option defaultValue value="1">
-              1 Person
-            </option>
-            <option value="2">2 Person</option>
-            <option value="3">3 Person</option>
-          </select>
-        </div>
-
-        <div className="flex items-end mt-3 lg:mb-1.5 ">
-          <button
-            type="submit"
-            className="bg-yellow-400 px-8 py-2.5 rounded font-semibold w-full"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-
-
-*/

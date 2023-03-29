@@ -12,6 +12,7 @@ import AddHotels from "./pages/Admin/AddHotels";
 import AddedHotels from "./pages/Admin/AddedHotels";
 import Dashboard from "./pages/Admin/Dashboard";
 import AddRooms from "./pages/Admin/AddRooms";
+import AllRooms from "./pages/Admin/AllRooms";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const App = () => {
         },
         {
           path: "/hotels",
+          loader: () => fetch("http://localhost:5000/hotels"),
           element: <AllHotels />,
         },
         {
@@ -45,6 +47,7 @@ const App = () => {
           children: [
             {
               path: "/admin/allUsers",
+              loader: () => fetch("http://localhost:5000/users"),
               element: <AllUsers />,
             },
             {
@@ -53,6 +56,7 @@ const App = () => {
             },
             {
               path: "/admin/addedHotels",
+              loader: () => fetch("http://localhost:5000/hotels"),
               element: <AddedHotels />,
             },
             {
@@ -61,7 +65,13 @@ const App = () => {
             },
             {
               path: "/admin/addRoom",
+              loader: () => fetch("http://localhost:5000/hotelName"),
               element: <AddRooms />,
+            },
+            {
+              path: "/admin/allRooms",
+              loader: () => fetch("http://localhost:5000/rooms"),
+              element: <AllRooms />,
             },
           ],
         },

@@ -3,11 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { RiHotelLine } from "react-icons/ri";
 import { RiMapPinAddLine } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
-import { AiOutlineUser } from "react-icons/ai";
+import { FaUsers } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { MdDomainAdd } from "react-icons/md";
 import { BsHouseAdd } from "react-icons/bs";
+import { ImHome3 } from "react-icons/im";
 const Sidebar = () => {
   const [show, setShow] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
@@ -75,10 +76,19 @@ const Sidebar = () => {
           <BsHouseAdd size={20} />
           <p className="pl-2 font-semibold">Add Rooms</p>
         </Link>
+        <Link
+          to="/admin/allRooms"
+          className={`${
+            isActive("/admin/allRooms") ? "bg-gray-100" : ""
+          }  flex items-center p-3  w-full pl-10 hover:bg-gray-100`}
+        >
+          <ImHome3 className=" " size={20} />
+          <p className="pl-2 font-semibold">All Rooms</p>
+        </Link>
       </div>
 
       <Link to="/admin/allUsers" className="flex items-center p-3  w-full">
-        <AiOutlineUser size={20} />
+        <FaUsers size={20} />
         <p className="pl-2 font-semibold">All Users</p>
       </Link>
     </div>

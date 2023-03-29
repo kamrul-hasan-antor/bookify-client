@@ -94,9 +94,6 @@ const AddHotels = () => {
 
   const handleImageUpload = async (e) => {
     const photos = e.target.files;
-
-    console.log(photos.length);
-
     if (photos.length < 5) {
       for (const file of photos) {
         const formData = new FormData();
