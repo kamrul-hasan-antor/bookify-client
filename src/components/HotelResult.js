@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const HotelResult = ({ setShowFilter, hotelResult }) => {
+const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
   const [rooms, setRooms] = useState([]);
 
   const handleShowFilter = () => {
-    setShowFilter(true);
+    setShowFilter(!showFilter);
   };
 
   useEffect(() => {
@@ -116,6 +116,7 @@ const HotelResult = ({ setShowFilter, hotelResult }) => {
                     })}
                 </div>
                 <Link
+                  to={`/hotels/${_id}`}
                   type="submit"
                   className="bg-[#1c3c6b] text-white py-3 rounded font-semibold text-sm px-3 hover:bg-[#2a5699]"
                 >

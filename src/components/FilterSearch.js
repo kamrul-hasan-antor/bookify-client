@@ -30,8 +30,8 @@ const FilterSearch = ({ showFilter, setShowFilter }) => {
   };
   return (
     <div
-      className={`lg:w-1/4 p-3.5 bg-white h-max rounded border lg:block absolute lg:static w-full ${
-        !showFilter ? "-top-[200%]" : "top-20"
+      className={`lg:w-1/4 p-3.5 bg-white h-max rounded border lg:block absolute lg:static w-full duration-100 ease-in top-20  ${
+        !showFilter ? "-left-[200%] " : " left-0  "
       } `}
     >
       <div className="flex items-center justify-between border-b pb-3">

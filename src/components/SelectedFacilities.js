@@ -128,45 +128,45 @@
 
 // export default SelectedFacilities;
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-const SelectedFacilities = () => {
-  const [selectedHotel, setSelectedHotel] = useState({
-    hotelName: "",
-    _id: "",
-  });
+// const SelectedFacilities = () => {
+//   const [selectedHotel, setSelectedHotel] = useState({
+//     hotelName: "",
+//     _id: "",
+//   });
 
-  const hotels = [
-    { _id: "6420088d9265ffca2e75b52a", hotelName: "Hotel Sea Pearl" },
-    { _id: "64213598335e71d4773d917f", hotelName: "Hotel Sea Crown" },
-    { _id: "642136d8335e71d4773d9180", hotelName: "Best Western Heritage" },
-  ];
+//   const hotels = [
+//     { _id: "6420088d9265ffca2e75b52a", hotelName: "Hotel Sea Pearl" },
+//     { _id: "64213598335e71d4773d917f", hotelName: "Hotel Sea Crown" },
+//     { _id: "642136d8335e71d4773d9180", hotelName: "Best Western Heritage" },
+//   ];
 
-  const handleHotelChange = (e) => {
-    const selectedHotelId = e.target.value;
-    const selectedHotel = hotels.find((hotel) => hotel._id === selectedHotelId);
-    setSelectedHotel(selectedHotel);
-  };
+//   const handleHotelChange = (e) => {
+//     const selectedHotelId = e.target.value;
+//     const selectedHotel = hotels.find((hotel) => hotel._id === selectedHotelId);
+//     setSelectedHotel(selectedHotel);
+//   };
 
-  return (
-    <div>
-      <label htmlFor="hotel-select">Select a Hotel:</label>
-      <select
-        id="hotel-select"
-        value={selectedHotel._id}
-        onChange={handleHotelChange}
-      >
-        <option value="">--Select a hotel-</option>
-        {hotels.map((hotel) => (
-          <option key={hotel._id} value={hotel._id}>
-            {hotel.hotelName}
-          </option>
-        ))}
-      </select>
-      <p>Selected Hotel: {selectedHotel.hotelName}</p>
-      <p>Selected Hotel ID: {selectedHotel._id}</p>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <label htmlFor="hotel-select">Select a Hotel:</label>
+//       <select
+//         id="hotel-select"
+//         value={selectedHotel._id}
+//         onChange={handleHotelChange}
+//       >
+//         <option value="">--Select a hotel-</option>
+//         {hotels.map((hotel) => (
+//           <option key={hotel._id} value={hotel._id}>
+//             {hotel.hotelName}
+//           </option>
+//         ))}
+//       </select>
+//       <p>Selected Hotel: {selectedHotel.hotelName}</p>
+//       <p>Selected Hotel ID: {selectedHotel._id}</p>
+//     </div>
+//   );
+// };
 
-export default SelectedFacilities;
+// export default SelectedFacilities;
