@@ -1,11 +1,10 @@
 import React from "react";
 import { BsFileEarmarkRuled } from "react-icons/bs";
 import { MdOutlineChildCare } from "react-icons/md";
-import { TbDog } from "react-icons/tb";
-import { FiInfo } from "react-icons/fi";
 import { RxCrossCircled } from "react-icons/rx";
 import { RxCheckCircled } from "react-icons/rx";
-const Policy = () => {
+const Policy = ({ policy }) => {
+  const { checkIn, checkOut, child, instruction } = policy;
   return (
     <div className="mt-10">
       <h4 className="bg-[#ecf3fe] p-4 py-3 text-lg font-semibold rounded-md border border-b-0 rounded-b-none">
@@ -19,7 +18,7 @@ const Policy = () => {
             </p>
           </div>
           <div className="w-4/5">
-            <p>12.00 PM</p>
+            <p>{checkIn}</p>
           </div>
         </div>
         <div className="flex mt-3">
@@ -29,7 +28,7 @@ const Policy = () => {
             </p>
           </div>
           <div className="w-4/5">
-            <p>11.00 AM</p>
+            <p>{checkOut}</p>
           </div>
         </div>
         <div className="flex mt-3">
@@ -39,12 +38,7 @@ const Policy = () => {
             </p>
           </div>
           <div className="w-4/5">
-            <p className="block list-disc">
-              Extra-person charges may apply and vary depending on property
-              policy Government-issued photo identification and a credit card,
-              debit card, or cash deposit may be required at check-in for
-              incidental charges
-            </p>
+            <p className="block list-disc">{instruction}</p>
           </div>
         </div>
         <div className="flex mt-3">
@@ -55,32 +49,7 @@ const Policy = () => {
             </p>
           </div>
           <div className="w-4/5">
-            <p>Maximum 2 child allowed in one room.</p>
-          </div>
-        </div>
-        <div className="flex mt-3">
-          <div className="w-1/2 lg:w-1/5">
-            <p className="flex items-center">
-              <TbDog size={18} className="mr-1" />
-              Pet Policy
-            </p>
-          </div>
-          <div className="w-4/5">
-            <p>Not Allowed</p>
-          </div>
-        </div>
-        <div className="flex mt-3">
-          <div className="w-1/2 lg:w-1/5">
-            <p className="flex items-center">
-              <FiInfo size={18} className="mr-1" />
-              House Rules
-            </p>
-          </div>
-          <div className="w-4/5">
-            <p>
-              Each guest has to present a copy of their valid NID/other forms of
-              identification documents during check-in.{" "}
-            </p>
+            <p>Maximum {child} child allowed for free</p>
           </div>
         </div>
       </div>

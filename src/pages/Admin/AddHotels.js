@@ -127,6 +127,7 @@ const AddHotels = () => {
     const district = form.district.value;
     const totalRooms = form.totalRooms.value;
     const constructionYear = form.constructionYear.value;
+    const floors = form.floors.value;
     const accomodation = form.accomodation.value;
     const instruction = form.instruction.value;
     const checkIn = form.checkIn.value;
@@ -148,6 +149,7 @@ const AddHotels = () => {
       checkIn,
       checkOut,
       child,
+      floors,
       describtion,
       facilities: {
         businessFacilities,

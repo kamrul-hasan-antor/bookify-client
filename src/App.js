@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AllHotels from "./pages/AllHotels/AllHotels";
 import Home from "./pages/Home/Home";
 import Main from "./pages/Main/Main";
-import HotelDetails from "./pages/HotelDetail/HotelDetail";
 import "./App.css";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
@@ -13,6 +12,7 @@ import AddedHotels from "./pages/Admin/AddedHotels";
 import Dashboard from "./pages/Admin/Dashboard";
 import AddRooms from "./pages/Admin/AddRooms";
 import AllRooms from "./pages/Admin/AllRooms";
+import HotelInfo from "./pages/HotelInfo/HotelInfo";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -30,8 +30,10 @@ const App = () => {
           element: <AllHotels />,
         },
         {
-          path: "/details/:id",
-          element: <HotelDetails />,
+          path: "/hotels/:id",
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/hotels/${params.id}`),
+          element: <HotelInfo />,
         },
         {
           path: "/register",

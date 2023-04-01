@@ -11,7 +11,7 @@ const AllHotels = () => {
   const search = JSON.parse(sessionStorage.getItem("searchObject"));
 
   const hotelResult = hotels.filter(
-    (hotel) => hotel.district === search.location
+    (hotel) => hotel.district === search?.district
   );
 
   return (

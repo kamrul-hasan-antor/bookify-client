@@ -12,26 +12,80 @@ const destination = [
 ];
 
 const SearchHotels = () => {
+  const [checkInDate, setCheckInDate] = useState(new Date());
+  const [checkOutDate, setCheckOutDate] = useState(
+    new Date(Date.now() + 86400000)
+  );
+
   const [searchObject, setSearchObject] = useState({
-    location: "",
+    district: "Cox's Bazar",
     guestNumber: "1",
     checkIn: "",
     checkOut: "",
   });
-  const [checkInMinDate, setCheckInMinDate] = useState("");
-  const [checkOutMinDate, setCheckOutMinDate] = useState("");
 
   const navigate = useNavigate("");
   const loaction = useLocation();
-  useEffect(() => {
-    const date = new Date();
-    const today = date.toISOString().split("T")[0];
-    date.setDate(date.getDate() + 1);
-    const tomorrow = date.toISOString().split("T")[0];
+  console.log(loaction);
+  // useEffect(() => {
+  //   const date = new Date();
+  //   const today = date.toISOString().split("T")[0];
+  //   date.setDate(date.getDate() + 1);
+  //   const tomorrow = date.toISOString().split("T")[0];
 
-    setCheckInMinDate(today);
-    setCheckOutMinDate(tomorrow);
-  }, []);
+  //   setCheckInMinDate(today);
+  //   setCheckOutMinDate(tomorrow);
+  // }, []);
+
+  // const handleCheckInChange = (event) => {
+  //   const selectedCheckInDate = new Date(event.target.value);
+  //   setSearchObject({
+  //     ...searchObject,
+  //     checkIn: event.target.value,
+  //   });
+
+  //   // const minimumCheckOutDate = new Date(
+  //   //   selectedCheckInDate.getTime() + 24 * 60 * 60 * 1000
+  //   // );
+  //   // const checkOutDate = minimumCheckOutDate.toISOString().split("T")[0];
+  //   // setCheckOutMinDate(checkOutDate);
+  //   // setSearchObject({
+  //   //   ...searchObject,
+  //   //   checkOut: checkOutMinDate,
+  //   // });
+  //   const selectedCheckOutDate = new Date(event.target.value);
+  //   setSearchObject({
+  //     ...searchObject,
+  //     checkOut: event.target.value,
+  //   });
+  // };
+
+  function handleCheckInDateChange(event) {
+    const selectedDate = new Date(event.target.value);
+    setCheckInDate(selectedDate);
+    setCheckOutDate(new Date(selectedDate.getTime() + 86400000)); // next day
+    setSearchObject({
+      ...searchObject,
+      checkIn: selectedDate.toISOString().split("T")[0],
+      checkOut: new Date(selectedDate.getTime() + 86400000)
+        .toISOString()
+        .split("T")[0],
+    });
+  }
+
+  // const handleCheckOutChange = (event) => {
+  //   setSearchObject({ ...searchObject, checkOut: event.target.value });
+  // };
+  function handleCheckOutDateChange(event) {
+    const selectedDate = new Date(event.target.value);
+    if (selectedDate.getTime() >= checkInDate.getTime()) {
+      setCheckOutDate(selectedDate);
+      setSearchObject({
+        ...searchObject,
+        checkOut: selectedDate.toISOString().split("T")[0],
+      });
+    }
+  }
 
   useEffect(() => {
     const storedSearchObject = sessionStorage.getItem("searchObject");
@@ -40,7 +94,7 @@ const SearchHotels = () => {
       setSearchObject(parsedSearchObject);
     }
   }, []);
-
+  console.log(searchObject);
   const handleSearch = () => {
     sessionStorage.setItem("searchObject", JSON.stringify(searchObject));
     navigate("/hotels");
@@ -49,10 +103,10 @@ const SearchHotels = () => {
   return (
     <div
       className={`bg-white ${
-        loaction.pathname === "/" ? "w-11/12 md:w-5/6" : "w-full"
+        loaction?.pathname === "/" ? "w-11/12 md:w-5/6" : "w-full"
       }  max-w-screen-2xl p-3 border border-slate-300 rounded`}
     >
-      <div className={` ${loaction.pathname === "/" ? "" : "hidden"} `}>
+      <div className={` ${loaction?.pathname === "/" ? "" : "hidden"} `}>
         <h3 className="text-lg md:text-xl lg:text-2xl my-1 text-center mb-6">
           Find your perfect place to stay at lowest prices.
         </h3>
@@ -69,9 +123,9 @@ const SearchHotels = () => {
           <select
             id="destination"
             name="district"
-            value={searchObject.location}
+            value={searchObject?.district}
             onChange={(e) =>
-              setSearchObject({ ...searchObject, location: e.target.value })
+              setSearchObject({ ...searchObject, district: e.target.value })
             }
             className="bg-gray-50 border border-gray-300 rounded-lg block p-3 w-full px-1"
           >
@@ -117,11 +171,13 @@ const SearchHotels = () => {
           <input
             type="date"
             name="checkIn"
-            min={checkInMinDate}
-            value={searchObject.checkIn}
-            onChange={(e) =>
-              setSearchObject({ ...searchObject, checkIn: e.target.value })
+            value={
+              searchObject.checkIn
+                ? searchObject.checkIn
+                : checkInDate.toISOString().split("T")[0]
             }
+            onChange={handleCheckInDateChange}
+            min={new Date().toISOString().split("T")[0]}
             className="bg-gray-50 border border-gray-300 rounded-lg block p-2.5 w-full px-1"
           />
         </div>
@@ -137,11 +193,13 @@ const SearchHotels = () => {
           <input
             type="date"
             name="checkOut"
-            min={checkOutMinDate}
-            value={searchObject.checkOut}
-            onChange={(e) =>
-              setSearchObject({ ...searchObject, checkOut: e.target.value })
+            value={
+              searchObject.checkOut
+                ? searchObject.checkOut
+                : checkOutDate.toISOString().split("T")[0]
             }
+            onChange={handleCheckOutDateChange}
+            min={checkInDate.toISOString().split("T")[0]}
             className="bg-gray-50 border border-gray-300 rounded-lg block p-2.5 w-full px-1"
           />
         </div>
@@ -151,7 +209,7 @@ const SearchHotels = () => {
             onClick={handleSearch}
             className="bg-[#1c3c6b] text-white py-3 rounded font-semibold w-full"
           >
-            {loaction.pathname === "/" ? "Search" : "Modify Search"}
+            {loaction?.pathname === "/" ? "Search" : "Modify Search"}
           </button>
         </div>
       </div>
