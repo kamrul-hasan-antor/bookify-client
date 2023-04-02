@@ -25,6 +25,7 @@ const AddHotels = () => {
   const [mediaFacilities, setMediaFacilities] = useState([]);
   const [transportFacilities, setTransportFacilities] = useState([]);
   const [othersFacilities, setOthersFacilities] = useState([]);
+  const [instruction, setInstruction] = useState([]);
   const [images, setImages] = useState([]);
 
   const imgBbApi = process.env.REACT_APP_API_URL;
@@ -52,6 +53,9 @@ const AddHotels = () => {
       }
       if (name === "others") {
         setOthersFacilities([...othersFacilities, value]);
+      }
+      if (name === "instruction") {
+        setInstruction([...instruction, value]);
       }
     } else {
       if (name === "business") {
@@ -89,6 +93,9 @@ const AddHotels = () => {
           othersFacilities.filter((facility) => facility !== value)
         );
       }
+      if (name === "instruction") {
+        setInstruction(instruction.filter((i) => i !== value));
+      }
     }
   };
 
@@ -107,7 +114,6 @@ const AddHotels = () => {
         );
 
         const data = await response.json();
-        console.log(data);
         setImages((prevState) => [...prevState, data.data.display_url]);
       }
     } else {
@@ -129,7 +135,7 @@ const AddHotels = () => {
     const constructionYear = form.constructionYear.value;
     const floors = form.floors.value;
     const accomodation = form.accomodation.value;
-    const instruction = form.instruction.value;
+    const nearBy = form.nearBy.value;
     const checkIn = form.checkIn.value;
     const checkOut = form.checkOut.value;
     const child = form.child.value;
@@ -137,6 +143,7 @@ const AddHotels = () => {
 
     const hotel = {
       hotelName,
+      instruction,
       images,
       hotelPhoneNumber,
       address,
@@ -145,7 +152,7 @@ const AddHotels = () => {
       totalRooms,
       constructionYear,
       accomodation,
-      instruction,
+      nearBy,
       checkIn,
       checkOut,
       child,
@@ -161,6 +168,7 @@ const AddHotels = () => {
         othersFacilities,
       },
     };
+
     fetch("http://localhost:5000/addHotels", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -219,7 +227,7 @@ const AddHotels = () => {
           </div>
 
           {/* phone number */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-phone"
@@ -237,7 +245,7 @@ const AddHotels = () => {
           </div>
 
           {/* address */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-address"
@@ -255,7 +263,7 @@ const AddHotels = () => {
           </div>
 
           {/* upazila */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-upazila"
@@ -273,7 +281,7 @@ const AddHotels = () => {
           </div>
 
           {/* District */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-district"
@@ -294,7 +302,7 @@ const AddHotels = () => {
           </div>
 
           {/* number of rooms */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-rooms"
@@ -312,7 +320,7 @@ const AddHotels = () => {
           </div>
 
           {/*  Number of Floors */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-floors"
@@ -323,14 +331,32 @@ const AddHotels = () => {
               className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
               id="grid-floors"
               type="text"
-              name="totalFloors"
+              name="floors"
               placeholder="8"
               required
             />
           </div>
 
+          {/*  Number of Floors */}
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
+            <label
+              className="block uppercase text-sm font-semibold mb-2"
+              htmlFor="grid-nearBy"
+            >
+              What's Nearby
+            </label>
+            <input
+              className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+              id="grid-nearBy"
+              type="text"
+              name="nearBy"
+              placeholder="0.22 km from Sugandha Point"
+              required
+            />
+          </div>
+
           {/*  Year of construction */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-construction"
@@ -348,7 +374,7 @@ const AddHotels = () => {
           </div>
 
           {/*  accomodation */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-accomodation"
@@ -368,26 +394,8 @@ const AddHotels = () => {
             </select>
           </div>
 
-          {/* Instruction */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
-            <label
-              className="block uppercase text-sm font-semibold mb-2"
-              htmlFor="grid-instruction"
-            >
-              Instruction
-            </label>
-            <input
-              className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
-              id="grid-instruction"
-              type="text"
-              name="instruction"
-              placeholder="Instruction For Guests"
-              required
-            />
-          </div>
-
           {/*  check in time */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-checkIn"
@@ -408,7 +416,7 @@ const AddHotels = () => {
           </div>
 
           {/*  check out time */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-checkOut"
@@ -429,7 +437,7 @@ const AddHotels = () => {
           </div>
 
           {/*  child */}
-          <div className="w-full md:w-1/4 px-3  mb-3">
+          <div className="w-full md:w-1/3 lg:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-child"
@@ -449,13 +457,53 @@ const AddHotels = () => {
             </select>
           </div>
 
+          {/* Instruction */}
+          <div className="my-4 w-full">
+            <p className="block uppercase px-3 text-sm font-semibold mb-2">
+              Instruction
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+              <label className="flex items-center px-3 mb-2">
+                <input
+                  type="checkbox"
+                  name="instruction"
+                  value="Bring NID when check in"
+                  onChange={handleFacilityChange}
+                />
+                <span className="checkbox-label pl-2">
+                  Bring NID when check in
+                </span>
+              </label>
+              <label className="flex items-center px-3 mb-2">
+                <input
+                  type="checkbox"
+                  name="instruction"
+                  value="Accepts cards, and cash"
+                  onChange={handleFacilityChange}
+                />
+                <span className="checkbox-label pl-2">
+                  Accepts cards, and cash
+                </span>
+              </label>
+              <label className="flex items-center px-3 mb-2 ">
+                <input
+                  type="checkbox"
+                  name="instruction"
+                  value="Call before arrival"
+                  onChange={handleFacilityChange}
+                />
+                <span className="checkbox-label pl-2">Call before arrival</span>
+              </label>
+            </div>
+          </div>
+
           {/* bussiness facilities */}
           <div className="mb-4 w-full">
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               Business Facilities
             </p>
-            <div className="flex flex-wrap ">
-              <label className="flex items-center md:w-1/3 lg:w-1/4  px-3 mb-2">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <label className="flex items-center px-3 mb-2">
                 <input
                   type="checkbox"
                   name="business"
@@ -464,7 +512,7 @@ const AddHotels = () => {
                 />
                 <span className="checkbox-label pl-2">Conference Hostess</span>
               </label>
-              <label className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2">
+              <label className="flex items-center px-3 mb-2">
                 <input
                   type="checkbox"
                   name="business"
@@ -472,6 +520,15 @@ const AddHotels = () => {
                   onChange={handleFacilityChange}
                 />
                 <span className="checkbox-label pl-2">Auditorium</span>
+              </label>
+              <label className="flex items-center px-3 mb-2">
+                <input
+                  type="checkbox"
+                  name="business"
+                  value="Sound System"
+                  onChange={handleFacilityChange}
+                />
+                <span className="checkbox-label pl-2">Sound System</span>
               </label>
             </div>
           </div>
@@ -481,8 +538,8 @@ const AddHotels = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               Fitness & Wellness Facilities
             </p>
-            <div className="flex flex-wrap">
-              <label className="flex items-center md:w-1/3 lg:w-1/4  px-3 mb-2">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <label className="flex items-center   px-3 mb-2">
                 <input
                   type="checkbox"
                   name="fitness"
@@ -491,7 +548,7 @@ const AddHotels = () => {
                 />
                 <span className="checkbox-label pl-2">Swimming Pool</span>
               </label>
-              <label className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2">
+              <label className="flex items-center px-3 mb-2">
                 <input
                   type="checkbox"
                   name="fitness"
@@ -500,7 +557,7 @@ const AddHotels = () => {
                 />
                 <span className="checkbox-label pl-2">Gym</span>
               </label>
-              <label className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2">
+              <label className="flex items-center px-3 mb-2">
                 <input
                   type="checkbox"
                   name="fitness"
@@ -517,13 +574,10 @@ const AddHotels = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               Food & Drinks
             </p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {foods.map((f, i) => {
                 return (
-                  <label
-                    className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2"
-                    key={i}
-                  >
+                  <label className="flex items-center px-3 mb-2" key={i}>
                     <input
                       type="checkbox"
                       name="food"
@@ -542,13 +596,10 @@ const AddHotels = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               General Facilities
             </p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {general.map((f, i) => {
                 return (
-                  <label
-                    className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2"
-                    key={i}
-                  >
+                  <label className="flex items-center px-3 mb-2" key={i}>
                     <input
                       type="checkbox"
                       value={f}
@@ -567,13 +618,10 @@ const AddHotels = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               Media & Technology
             </p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {media.map((f, i) => {
                 return (
-                  <label
-                    className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2"
-                    key={i}
-                  >
+                  <label className="flex items-center px-3 mb-2" key={i}>
                     <input
                       type="checkbox"
                       name="media"
@@ -592,13 +640,10 @@ const AddHotels = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               Transportation
             </p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {tranport.map((f, i) => {
                 return (
-                  <label
-                    className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2"
-                    key={i}
-                  >
+                  <label className="flex items-center px-3 mb-2" key={i}>
                     <input
                       type="checkbox"
                       name="transport"
@@ -617,13 +662,10 @@ const AddHotels = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               Others Facilities
             </p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {others.map((f, i) => {
                 return (
-                  <label
-                    className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2"
-                    key={i}
-                  >
+                  <label className="flex items-center px-3 mb-2" key={i}>
                     <input
                       type="checkbox"
                       name="others"

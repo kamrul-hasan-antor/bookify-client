@@ -32,7 +32,7 @@ const Navbar = () => {
       } 
       } `}
     >
-      <div className="relative flex justify-between items-center md:h-[80px] h-[70px] w-full xl:px-4 2xl:px-0 lg:w- max-w-screen-2xl mx-auto">
+      <div className="relative flex justify-between items-center md:h-[80px] h-[70px]  xl:px-4 2xl:px-0 w-11/12 mx-auto">
         <div className="w-1/12 lg:w-0">
           {open ? (
             <GiHamburgerMenu

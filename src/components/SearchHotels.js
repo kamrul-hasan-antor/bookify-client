@@ -26,44 +26,11 @@ const SearchHotels = () => {
 
   const navigate = useNavigate("");
   const loaction = useLocation();
-  console.log(loaction);
-  // useEffect(() => {
-  //   const date = new Date();
-  //   const today = date.toISOString().split("T")[0];
-  //   date.setDate(date.getDate() + 1);
-  //   const tomorrow = date.toISOString().split("T")[0];
-
-  //   setCheckInMinDate(today);
-  //   setCheckOutMinDate(tomorrow);
-  // }, []);
-
-  // const handleCheckInChange = (event) => {
-  //   const selectedCheckInDate = new Date(event.target.value);
-  //   setSearchObject({
-  //     ...searchObject,
-  //     checkIn: event.target.value,
-  //   });
-
-  //   // const minimumCheckOutDate = new Date(
-  //   //   selectedCheckInDate.getTime() + 24 * 60 * 60 * 1000
-  //   // );
-  //   // const checkOutDate = minimumCheckOutDate.toISOString().split("T")[0];
-  //   // setCheckOutMinDate(checkOutDate);
-  //   // setSearchObject({
-  //   //   ...searchObject,
-  //   //   checkOut: checkOutMinDate,
-  //   // });
-  //   const selectedCheckOutDate = new Date(event.target.value);
-  //   setSearchObject({
-  //     ...searchObject,
-  //     checkOut: event.target.value,
-  //   });
-  // };
 
   function handleCheckInDateChange(event) {
     const selectedDate = new Date(event.target.value);
     setCheckInDate(selectedDate);
-    setCheckOutDate(new Date(selectedDate.getTime() + 86400000)); // next day
+    setCheckOutDate(new Date(selectedDate.getTime() + 86400000));
     setSearchObject({
       ...searchObject,
       checkIn: selectedDate.toISOString().split("T")[0],
@@ -73,9 +40,6 @@ const SearchHotels = () => {
     });
   }
 
-  // const handleCheckOutChange = (event) => {
-  //   setSearchObject({ ...searchObject, checkOut: event.target.value });
-  // };
   function handleCheckOutDateChange(event) {
     const selectedDate = new Date(event.target.value);
     if (selectedDate.getTime() >= checkInDate.getTime()) {
@@ -94,7 +58,7 @@ const SearchHotels = () => {
       setSearchObject(parsedSearchObject);
     }
   }, []);
-  console.log(searchObject);
+
   const handleSearch = () => {
     sessionStorage.setItem("searchObject", JSON.stringify(searchObject));
     navigate("/hotels");

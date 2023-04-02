@@ -15,8 +15,8 @@ const AllHotels = () => {
   );
 
   return (
-    <div className="h-max w-full xl:px-4 2xl:px-0 pt-20 lg:pt-24 lg:w- max-w-screen-2xl mx-auto lg:static">
-      <div className="pb-3.5">
+    <div className="h-max w-11/12 pt-20 lg:w- max-w-screen-2xl mx-auto  lg:static">
+      <div className="my-4">
         <SearchHotels />
       </div>
       <div className="flex lg:flex-row flex-col relative">

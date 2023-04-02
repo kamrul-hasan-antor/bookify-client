@@ -1,7 +1,7 @@
 import React from "react";
 const Cart = () => {
   return (
-    <div className="col-span-1  mt-5 lg:mt-0 h-full">
+    <div className="col-span-1 mt-5 lg:mt-0 h-full">
       <div className="border rounded-md sticky top-20">
         <div
           className="bg-[#ecf3fe]  text-lg font-semibold

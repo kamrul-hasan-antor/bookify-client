@@ -38,7 +38,11 @@ const Policy = ({ policy }) => {
             </p>
           </div>
           <div className="w-4/5">
-            <p className="block list-disc">{instruction}</p>
+            <ul className="block list-disc">
+              {instruction.map((ins, i) => (
+                <li key={i}>{ins}</li>
+              ))}
+            </ul>
           </div>
         </div>
         <div className="flex mt-3">

@@ -59,7 +59,7 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
         return (
           <div
             key={i}
-            className="bg-white  lg:h-56 p-3.5 lg:flex my-3.5 border rounded-sm"
+            className="bg-white  lg:h-56 p-3.5 lg:flex my-3.5 border rounded"
           >
             <div className="w-full lg:w-1/3">
               <img
@@ -86,28 +86,13 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
                       return (
                         <div key={i}>
                           {i === 0 ? (
-                            <>
-                              <p className="text-[15px]">
-                                <span className="font-semibold mr-1.5">
-                                  Min Rent:
-                                </span>{" "}
-                                BDT {r.rackRate} /per night
-                              </p>
-                              <p className="text-[15px]">
-                                <span className="font-semibold mr-1.5">
-                                  Discount:
-                                </span>{" "}
-                                {r.discount}%
-                              </p>
-                              <p className="text-[15px]">
-                                <span className="font-semibold mr-1.5">
-                                  Total:
-                                </span>{" "}
-                                BDT {(r.rackRate * (100 - r.discount)) / 100}{" "}
-                                /per night
-                              </p>
-                              <p> </p>
-                            </>
+                            <p>
+                              <span className="font-semibold mr-1.5">
+                                Starts From:
+                              </span>
+                              BDT {(r.rackRate * (100 - r.discount)) / 100} /per
+                              night
+                            </p>
                           ) : (
                             ""
                           )}
@@ -120,7 +105,7 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
                   type="submit"
                   className="bg-[#1c3c6b] text-white py-3 rounded font-semibold text-sm px-3 hover:bg-[#2a5699]"
                 >
-                  All Rooms
+                  View Rooms
                 </Link>
               </div>
             </div>

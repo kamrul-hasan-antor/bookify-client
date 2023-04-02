@@ -7,10 +7,7 @@ const AddRooms = () => {
   const hotels = useLoaderData();
   const [roomF, setRoomF] = useState([]);
   const [images, setImages] = useState("");
-  const [selectedHotel, setSelectedHotel] = useState({
-    hotelName: "",
-    _id: "",
-  });
+  const [selectedHotel, setSelectedHotel] = useState(hotels[0]);
   const imgBbApi = process.env.REACT_APP_API_URL;
 
   const handleRoomFacilities = (e) => {
@@ -39,8 +36,8 @@ const AddRooms = () => {
 
   const handleHotelChange = (e) => {
     const selectedHotelId = e.target.value;
-    const selectedHotel = hotels.find((hotel) => hotel._id === selectedHotelId);
-    setSelectedHotel(selectedHotel);
+    const selecHotel = hotels.find((hotel) => hotel._id === selectedHotelId);
+    setSelectedHotel(selecHotel);
   };
 
   const handleAddRooms = async (e) => {
@@ -48,6 +45,8 @@ const AddRooms = () => {
 
     const form = e.target;
     const roomName = form.roomName.value;
+    const maxGuest = form.maxGuest.value;
+    const complimentary = form.complimentary.value;
     const rackRate = form.rackRate.value;
     const discount = form.discount.value;
     const totalRoom = form.totalRoom.value;
@@ -55,11 +54,14 @@ const AddRooms = () => {
     const room = {
       roomName,
       hotelName,
+      maxGuest,
+      complimentary,
       roomImgs: images,
       rackRate,
       discount,
       totalRoom,
       hotleId,
+      facilities: roomF,
     };
 
     fetch(`http://localhost:5000/addRooms`, {
@@ -81,8 +83,7 @@ const AddRooms = () => {
       <form onSubmit={handleAddRooms}>
         <div className="flex flex-wrap px-1 lg:px-3">
           {/* room name */}
-
-          <div className="w-full md:w-1/2 px-3  mb-3">
+          <div className="w-full md:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-roomName"
@@ -100,7 +101,7 @@ const AddRooms = () => {
           </div>
 
           {/* Hotel name */}
-          <div className="w-full md:w-1/2 px-3  mb-3">
+          <div className="w-full md:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-hotelName"
@@ -122,6 +123,45 @@ const AddRooms = () => {
                 );
               })}
             </select>
+          </div>
+
+          {/* maxGuest */}
+          <div className="w-full md:w-1/4 px-3  mb-3">
+            <label
+              className="block uppercase text-sm font-semibold mb-2"
+              htmlFor="grid-maxGuest"
+            >
+              Max Guests
+            </label>
+            <select
+              id="grid-maxGuest"
+              className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+              name="maxGuest"
+            >
+              <option defaultValue value="1">
+                1 Guest
+              </option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+            </select>
+          </div>
+
+          {/* Complimentary */}
+          <div className="w-full md:w-1/4 px-3  mb-3">
+            <label
+              className="block uppercase text-sm font-semibold mb-2"
+              htmlFor="grid-complimentary"
+            >
+              Complimentary
+            </label>
+            <input
+              className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+              id="grid-complimentary"
+              type="text"
+              name="complimentary"
+              placeholder="Breakfast"
+              required
+            />
           </div>
 
           {/* Image */}
@@ -185,7 +225,6 @@ const AddRooms = () => {
           </div>
 
           {/* Number of rooms */}
-
           <div className="w-full md:w-1/4 px-3  mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
@@ -208,13 +247,10 @@ const AddRooms = () => {
             <p className="block uppercase px-3 text-sm font-semibold mb-2">
               room facilities
             </p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
               {roomFacilities.map((f, i) => {
                 return (
-                  <label
-                    className="flex items-center md:w-1/3 lg:w-1/4 px-3 mb-2"
-                    key={i}
-                  >
+                  <label className="flex items-center px-3 mb-2" key={i}>
                     <input
                       type="checkbox"
                       name="food"
@@ -227,6 +263,7 @@ const AddRooms = () => {
               })}
             </div>
           </div>
+
           <div className="px-3">
             <button
               type="submit"
