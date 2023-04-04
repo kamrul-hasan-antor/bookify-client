@@ -20,8 +20,8 @@ const SearchHotels = () => {
   const [searchObject, setSearchObject] = useState({
     district: "Cox's Bazar",
     guestNumber: "1",
-    checkIn: "",
-    checkOut: "",
+    hotelCheckInDate: checkInDate.toISOString().split("T")[0],
+    hotelCheckOutDate: checkOutDate.toISOString().split("T")[0],
   });
 
   const navigate = useNavigate("");
@@ -33,8 +33,8 @@ const SearchHotels = () => {
     setCheckOutDate(new Date(selectedDate.getTime() + 86400000));
     setSearchObject({
       ...searchObject,
-      checkIn: selectedDate.toISOString().split("T")[0],
-      checkOut: new Date(selectedDate.getTime() + 86400000)
+      hotelCheckInDate: selectedDate.toISOString().split("T")[0],
+      hotelCheckOutDate: new Date(selectedDate.getTime() + 86400000)
         .toISOString()
         .split("T")[0],
     });
@@ -46,7 +46,7 @@ const SearchHotels = () => {
       setCheckOutDate(selectedDate);
       setSearchObject({
         ...searchObject,
-        checkOut: selectedDate.toISOString().split("T")[0],
+        hotelCheckOutDate: selectedDate.toISOString().split("T")[0],
       });
     }
   }
@@ -77,6 +77,7 @@ const SearchHotels = () => {
       </div>
       {/* Search fields */}
       <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-2 w-full py-2">
+        {/* Distric name */}
         <div className="w-full">
           <label
             htmlFor="destination"
@@ -136,8 +137,8 @@ const SearchHotels = () => {
             type="date"
             name="checkIn"
             value={
-              searchObject.checkIn
-                ? searchObject.checkIn
+              searchObject.hotelCheckInDate
+                ? searchObject.hotelCheckInDate
                 : checkInDate.toISOString().split("T")[0]
             }
             onChange={handleCheckInDateChange}
@@ -158,8 +159,8 @@ const SearchHotels = () => {
             type="date"
             name="checkOut"
             value={
-              searchObject.checkOut
-                ? searchObject.checkOut
+              searchObject.hotelCheckOutDate
+                ? searchObject.hotelCheckOutDate
                 : checkOutDate.toISOString().split("T")[0]
             }
             onChange={handleCheckOutDateChange}

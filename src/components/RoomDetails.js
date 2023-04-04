@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import { GiKnifeFork } from "react-icons/gi";
+import RoomModal from "../pages/HotelDetail/RoomModal";
 
-const RoomDetails = ({ rooms }) => {
+const RoomDetails = ({ rooms, setRoomToCart }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState({});
+
+  const handleAddToCart = (room) => {
+    setRoomToCart(room);
+  };
+
+  const handleShowModal = (id) => {
+    const data = rooms.find((room) => room._id === id);
+    setShowModal(true);
+    setModalData({ roomName: data.roomName, facilities: data.facilities });
+  };
+
   return (
     <div className="col-span-2">
       <h4 className="bg-[#ecf3fe] p-4 py-3 text-lg font-semibold rounded-md border border-b-0 rounded-b-none ">
         Room Details
       </h4>
 
-      {rooms.map((rooms, i) => {
+      {rooms.map((room, i) => {
         const {
+          _id,
           discount,
           rackRate,
           roomImgs,
@@ -19,7 +34,8 @@ const RoomDetails = ({ rooms }) => {
           maxGuest,
           complimentary,
           facilities,
-        } = rooms;
+        } = room;
+
         const tax = 10;
         return (
           <div
@@ -37,13 +53,13 @@ const RoomDetails = ({ rooms }) => {
               />
               <h4 className="text-lg font-semibold my-2 ">{roomName}</h4>
               <small className="flex items-center font-semibold">
-                <BsFillPeopleFill className="mr-1" /> Maximum Room Capacity:{" "}
+                <BsFillPeopleFill className="mr-1" /> Maximum Capacity:{" "}
                 {maxGuest}
               </small>
             </div>
 
             {/* right side */}
-            <div className="lg:pl-4 lg:w-3/5">
+            <div className="md:pl-4 lg:w-3/5">
               <div className="flex justify-between mt-4 md:mt-0">
                 <small className="bg-[#ecf3fe] font-semibold p-2 rounded-sm">
                   Option {i + 1}
@@ -54,7 +70,7 @@ const RoomDetails = ({ rooms }) => {
               </div>
 
               {/* room price */}
-              <div className="flex flex-col lg:flex-row justify-between lg:mt-6 text-sm lg:text-base">
+              <div className="flex flex-col lg:flex-row justify-between mt-4 text-sm lg:text-base">
                 <div className="lg:w-2/3">
                   <p className="flex items-center">
                     <BsFillPeopleFill className="mr-2" /> {maxGuest} Adults
@@ -69,7 +85,10 @@ const RoomDetails = ({ rooms }) => {
                       </span>
                     ))}
                   </div>
-                  <button className="mt-3 underline font-semibold text-sm">
+                  <button
+                    onClick={() => handleShowModal(_id)}
+                    className="mt-3 underline font-semibold text-sm"
+                  >
                     Show All
                   </button>
                 </div>
@@ -87,7 +106,10 @@ const RoomDetails = ({ rooms }) => {
                     </h4>
                     <p>+ Tax & Fees: {tax}% </p>
                   </div>
-                  <button className="bg-[#1c3c6b] hover:bg-[#2a5699] text-white px-3 py-2 rounded font-semibold mt-3">
+                  <button
+                    onClick={() => handleAddToCart(room)}
+                    className="bg-[#1c3c6b] hover:bg-[#2a5699] text-white px-3 py-2 rounded font-semibold mt-3"
+                  >
                     Add Room
                   </button>
                 </div>
@@ -96,6 +118,11 @@ const RoomDetails = ({ rooms }) => {
           </div>
         );
       })}
+      <RoomModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalData={modalData}
+      />
     </div>
   );
 };

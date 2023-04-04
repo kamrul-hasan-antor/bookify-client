@@ -17,7 +17,7 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
   }, []);
 
   if (!hotelResult) {
-    return <div className="text-5xl">Loading...</div>;
+    return <div className="text-5xl mt-20">Loading...</div>;
   }
 
   return (

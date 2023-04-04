@@ -5,11 +5,14 @@ import Cart from "../../components/Cart";
 import Facilities from "../../components/Facilities";
 import Policy from "../../components/Policy";
 import RoomDetails from "../../components/RoomDetails";
+import ImageSlider from "./ImageSlider";
 
 const HotelDetail = () => {
   const [rooms, setRooms] = useState([]);
+  const [roomToCart, setRoomToCart] = useState({});
   const selectedHotel = useLoaderData();
   const [hotel] = selectedHotel;
+
   const {
     _id,
     address,
@@ -23,6 +26,7 @@ const HotelDetail = () => {
     checkIn,
     checkOut,
     child,
+    images,
     instruction,
     nearBy,
   } = hotel;
@@ -65,12 +69,8 @@ const HotelDetail = () => {
       <div>
         {/* -------Top Banner------- */}
         <div className="flex lg:flex-row flex-col mt-4 bg-white p-4 rounded-md">
-          <div className="lg:w-[50%] bg-blue-50 lg:h-[345px]">
-            <img
-              src="https://images.unsplash.com/photo-1517329782449-810562a4ec2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=863&q=80"
-              alt=""
-              className="rounded-md h-full w-full"
-            />
+          <div className="lg:w-[50%] lg:h-[345px] h-full">
+            <ImageSlider images={images} />
           </div>
           <div className="lg:w-[50%] mt-4 lg:mt-0 lg:pl-5 h-max">
             {/* Hotel name and Address */}
@@ -122,8 +122,8 @@ const HotelDetail = () => {
         </div>
         {/* Room Details and Cart */}
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-3 mt-10 relative">
-          <RoomDetails rooms={rooms} />
-          <Cart />
+          <RoomDetails setRoomToCart={setRoomToCart} rooms={rooms} />
+          <Cart roomToCart={roomToCart} setRoomToCart={setRoomToCart} />
         </div>
         <Facilities facilities={facilities} />
         <Policy policy={policy} />
