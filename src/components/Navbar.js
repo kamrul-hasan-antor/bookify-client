@@ -61,12 +61,10 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
-                <Link to="/hotels">Hotels</Link>
+              <li className="md:px-3 font-semibold nav_list py-1 md:py-0 ">
+                <a href="#luxuriasRooms">Luxurias Rooms</a>
               </li>
-              <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
-                <a href="#services">Services</a>
-              </li>
+
               <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                 <a href="#contact">Contact</a>
               </li>
@@ -75,9 +73,15 @@ const Navbar = () => {
                   <Link to="/admin/allBookings">Admin</Link>
                 </li>
               ) : (
+                ""
+              )}
+              {user?.email &&
+              user?.email !== "kamrulhasan.antor95@gmail.com" ? (
                 <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                   <Link to="/myBookings">My Bookings</Link>
                 </li>
+              ) : (
+                ""
               )}
               {user?.email ? (
                 <li
@@ -91,15 +95,7 @@ const Navbar = () => {
               )}
 
               {user?.email ? (
-                <li className="md:pl-3 font-semibold nav_list py-1 md:py-0">
-                  <Link to="/">
-                    <img
-                      src="https://avatars.githubusercontent.com/u/76778073?s=400&u=3fb2b92539caf07439b0f7dab5024b0db208256a&v=4"
-                      alt=""
-                      className="w-10 h-10 rounded-full"
-                    />
-                  </Link>
-                </li>
+                ""
               ) : (
                 <>
                   <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
@@ -116,7 +112,6 @@ const Navbar = () => {
       </div>
 
       {/* nav items for mobile and tablet devices. */}
-
       <div
         className={`lg:hidden h-screen absolute z-30  ${
           open ? "left-0" : "-left-full"
@@ -141,14 +136,20 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="py-3">
-            <Link to="/hotels">Hotels</Link>
-          </li>
-          <li className="py-3">
-            <a href="#services">Services</a>
+            <a href="#luxuriasRooms">Luxurias Rooms</a>
           </li>
           <li className="py-3">
             <Link to="/">Contact</Link>
           </li>
+          {user?.email === "kamrulhasan.antor95@gmail.com" ? (
+            <li className="py-3">
+              <Link to="/admin/allBookings">Admin</Link>
+            </li>
+          ) : (
+            <li className="py-3">
+              <Link to="/myBookings">My Bookings</Link>
+            </li>
+          )}
           {user?.email ? (
             <li onClick={handleSignOut} className="py-3">
               <Link to="/">Sign out</Link>
@@ -156,16 +157,9 @@ const Navbar = () => {
           ) : (
             ""
           )}
+
           {user?.email ? (
-            <li className="py-3">
-              <Link to="/">
-                <img
-                  src="https://avatars.githubusercontent.com/u/76778073?s=400&u=3fb2b92539caf07439b0f7dab5024b0db208256a&v=4"
-                  alt=""
-                  className="w-10 h-10 rounded-full"
-                />
-              </Link>
-            </li>
+            ""
           ) : (
             <>
               <li className="py-3">

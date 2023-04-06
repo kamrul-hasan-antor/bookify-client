@@ -1,8 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllRooms = () => {
   const rooms = useLoaderData();
+
   return (
     <div>
       <div className="pb- pt-1">
@@ -38,7 +39,8 @@ const AllRooms = () => {
                   </thead>
                   <tbody>
                     {rooms.reverse().map((room, i) => {
-                      const { hotelName, roomName, rackRate, discount } = room;
+                      const { hotelName, roomName, rackRate, discount, _id } =
+                        room;
                       return (
                         <tr
                           key={i}
@@ -60,15 +62,18 @@ const AllRooms = () => {
                           </td>
 
                           <td className="px-4 align-middle whitespace-nowrap flex py-2">
-                            <div className="w-1/2 pr-1">
-                              <button className="bg-green-400 w-full px-4 py-2 ">
+                            <div className="w-1/2 pr-1 ">
+                              <Link
+                                to={`/editRoom/${_id}`}
+                                className="bg-green-400 font-semibold w-full px-4 py-2 block text-center rounded-sm"
+                              >
                                 Edit
-                              </button>
+                              </Link>
                             </div>
                             <div className="w-1/2 pl-1">
-                              <button className="bg-red-400 font-semibold w-full px-4 py-2">
+                              <Link className="bg-red-400 font-semibold w-full px-4 py-2 block text-center rounded-sm">
                                 Delete
-                              </button>
+                              </Link>
                             </div>
                           </td>
                         </tr>

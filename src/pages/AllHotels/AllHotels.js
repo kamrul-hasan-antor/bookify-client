@@ -56,7 +56,7 @@ const AllHotels = () => {
   const hotels =
     accommodationType.length > 0
       ? filterByFacility.filter((hotel) =>
-          accommodationType.includes(hotel.accomodation)
+          accommodationType.includes(hotel.accomodation.toLowerCase())
         )
       : filterByFacility;
 

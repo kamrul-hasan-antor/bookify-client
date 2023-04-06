@@ -18,10 +18,13 @@ import AllBookings from "./pages/Dashboard/Admin/AllBookings";
 import MyBookings from "./pages/Dashboard/User/MyBookings";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
-import NotFound from "./pages/NotFound/NotFound";
+import AdminRoute from "./ProtectedRoute/AdminRoute";
+import EditRooms from "./pages/Dashboard/Admin/EditRooms";
 
 const App = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
+
+  // console.log(user?.email);
 
   const router = createBrowserRouter([
     {
@@ -65,61 +68,65 @@ const App = () => {
             {
               path: "/admin/allUsers",
               loader: () => fetch("http://localhost:5000/users"),
-              element:
-                user?.email === "kamrulhasan.antor95@gmail.com" ? (
+              element: (
+                <AdminRoute path="/admin/allUsers">
                   <AllUsers />
-                ) : (
-                  <NotFound />
-                ),
+                </AdminRoute>
+              ),
             },
             {
               path: "/admin/addHotels",
-              element:
-                user?.email === "kamrulhasan.antor95@gmail.com" ? (
-                  <AddHotels />
-                ) : (
-                  <NotFound />
-                ),
+              element: (
+                <AdminRoute path="/admin/addHotels">
+                  <AddHotels />,
+                </AdminRoute>
+              ),
             },
             {
               path: "/admin/addedHotels",
               loader: () => fetch("http://localhost:5000/hotels"),
-              element:
-                user?.email === "kamrulhasan.antor95@gmail.com" ? (
+              element: (
+                <AdminRoute path="/admin/addedHotels">
                   <AddedHotels />
-                ) : (
-                  <NotFound />
-                ),
+                </AdminRoute>
+              ),
             },
             {
               path: "/admin/allBookings",
-              element:
-                user?.email === "kamrulhasan.antor95@gmail.com" ? (
+              element: (
+                <AdminRoute path="/admin/allBookings">
                   <AllBookings />
-                ) : (
-                  <NotFound />
-                ),
+                </AdminRoute>
+              ),
             },
 
             {
               path: "/admin/addRoom",
               loader: () => fetch("http://localhost:5000/hotelName"),
-              element:
-                user?.email === "kamrulhasan.antor95@gmail.com" ? (
+              element: (
+                <AdminRoute path="/admin/addRoom">
                   <AddRooms />
-                ) : (
-                  <NotFound />
-                ),
+                </AdminRoute>
+              ),
             },
             {
               path: "/admin/allRooms",
               loader: () => fetch("http://localhost:5000/rooms"),
-              element:
-                user?.email === "kamrulhasan.antor95@gmail.com" ? (
+              element: (
+                <AdminRoute path="/admin/allRooms">
                   <AllRooms />
-                ) : (
-                  <NotFound />
-                ),
+                </AdminRoute>
+              ),
+            },
+            {
+              path: "/editRoom/:id",
+              loader: ({ params }) =>
+                fetch(`http://localhost:5000/editRoom/${params.id}`),
+              element: (
+                <AdminRoute path="/editRoom/:id">
+                  <EditRooms />
+                </AdminRoute>
+              ),
             },
             {
               path: "/myBookings",

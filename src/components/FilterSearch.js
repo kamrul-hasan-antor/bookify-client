@@ -2,23 +2,45 @@ import React, { useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 
 const facilities = [
-  "Breakfast",
-  "Restaurant",
-  "Wi-Fi",
-  "24-hour Security",
-  "Parking Area",
-  "Swimming Pool",
-  "Room Service",
-  "Laundry Facilities",
-  "Airport Shuttle",
-  "Fitness Centre",
-  "Air Conditioning",
-  "Balcony",
-  "Couple Friendly",
-  "Kid Friendly",
-  "Disability Friendly",
-  "Indoor Games",
+  "Garden",
+
+  "Sofa Bed",
+
+  "Smoke detector",
+
+  "Lockers",
+
+  "In-room Accessibility",
+
   "ID Required",
+
+  "Elevator",
+
+  "Currency Exchange",
+
+  "Coffee/Tea in Lobby",
+
+  "Air Conditioning",
+
+  "Accessible Bathroom",
+
+  "Disability Friendly",
+
+  "Towel",
+
+  "Couple Friendly",
+
+  "No Alcohol",
+
+  "Late Check-Out",
+
+  "Early Check-Out",
+
+  "Early Check-In",
+
+  "City Center",
+
+  "Restaurant",
 ];
 
 const accommodationType = ["Hotel", "Appartment", "Resort"];
@@ -28,7 +50,6 @@ const FilterSearch = ({
   setShowFilter,
   handleFilterByFacility,
   setSearchText,
-
   handleFilterByACcType,
 }) => {
   const [showAll, setShowAll] = useState(false);

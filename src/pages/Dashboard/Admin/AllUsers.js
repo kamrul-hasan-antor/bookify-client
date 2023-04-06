@@ -6,7 +6,7 @@ const AllUsers = () => {
     <div>
       <div className="pb- pt-1">
         <p className="px-2 md:text-xl font-bold uppercase mb- pb-3 border-b">
-          Total {users.length} bookings
+          Total {users.length} users
         </p>
       </div>
 

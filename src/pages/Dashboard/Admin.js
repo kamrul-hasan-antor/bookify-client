@@ -20,12 +20,12 @@ const Admin = () => {
           <Sidebar />
         </div>
         <div className="bg-white w-full min-h-screen  lg:w-5/6">
-          <div className="flex justify-end p-2 lg:hidden ">
+          <div className="flex justify-end p-2 lg:hidden w-max absolute right-0">
             <button onClick={handleOpen}>
               {open ? <RxCross1 size={26} /> : <BsJustifyRight size={28} />}
             </button>
           </div>
-          <Outlet />
+          <Outlet className="relative" />
         </div>
       </div>
     </div>
