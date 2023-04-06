@@ -3,8 +3,6 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
-import travel from "../../images/signup.png";
-
 const Register = () => {
   const { createUser, auth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -14,23 +12,19 @@ const Register = () => {
   const handleRegisterUser = (e) => {
     e.preventDefault();
     const form = e.target;
-    const fullName = form.fullName.value;
-    const nid = form.nid.value;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
     const email = form.email.value;
     const password = form.password.value;
-    const address = form.address.value;
-    const photo = form.photo.value;
+    const phoneNumber = form.phoneNumber.value;
     const age = form.age.value;
     const gender = form.gender.value;
-    const phoneNumber = form.phoneNumber.value;
 
     const user = {
-      fullName,
-      photo,
+      firstName,
+      lastName,
       email,
       phoneNumber,
-      nid,
-      address,
       age,
       gender,
     };
@@ -38,8 +32,7 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         updateProfile(auth.currentUser, {
-          displayName: fullName,
-          photoURL: photo,
+          displayName: firstName + " " + lastName,
           phoneNumber: phoneNumber,
         });
 
@@ -61,45 +54,41 @@ const Register = () => {
       });
   };
   return (
-    <div className="h-max w-11/12 lg:w-5/6 pt-28 lg:w- max-w-screen-xl mx-auto ">
-      <div className="flex border p-3 rounded-sm">
-        <div className="hidden lg:block lg:w-1/2 pr-3 border-r border-slate-300">
-          <img className="w-full h-full" src={travel} alt="" />
-        </div>
-
-        <form onSubmit={handleRegisterUser} className="w-full lg:w-1/2 lg:pl-3">
+    <div className="h-max w-11/12 lg:w-1/2 pt-28 lg:w- max-w-screen-md mx-auto ">
+      <div className="border p-3 py-8 rounded-sm bg-white shadow-md">
+        <form onSubmit={handleRegisterUser} className="w-full">
           <h4 className="mb-3 font-semibold text-2xl lg:text-3xl pb-3 uppercase text-center">
             Register Now
           </h4>
-          {/* Name and NID */}
+          {/* Name */}
           <div className="flex flex-wrap -mx-3">
             <div className="w-full md:w-1/2 px-3 mb-3">
               <label
                 className="block uppercase text-sm font-semibold mb-2"
                 htmlFor="grid-first-name"
               >
-                Full Name
+                first Name
               </label>
               <input
-                className="appearance-none block w-full border border-red-500 rounded py-3 px-4 focus:outline-none focus:border-[#1c3c6b]"
+                className="appearance-none block w-full border rounded py-3 px-4 focus:outline-none focus:border-[#1c3c6b]"
                 id="grid-first-name"
                 type="text"
-                placeholder="Janee"
-                name="fullName"
+                placeholder="Mrs. Janee Haz"
+                name="firstName"
               />
             </div>
             <div className="w-full md:w-1/2 px-3 mb-3">
               <label
                 className="block uppercase  text-sm font-semibold mb-2"
-                htmlFor="grid-nid"
+                htmlFor="grid-lastName"
               >
-                National ID
+                Last Name
               </label>
               <input
                 className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 focus:outline-none focus:border-[#1c3c6b]"
-                id="grid-nid"
+                id="grid-lastName"
                 type="text"
-                name="nid"
+                name="lastName"
                 placeholder="123-456-7890"
               />
             </div>
@@ -115,7 +104,7 @@ const Register = () => {
                 Email
               </label>
               <input
-                className="appearance-none block w-full   border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+                className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:border-[#1c3c6b]"
                 id="grid-email"
                 type="email"
                 name="email"
@@ -131,7 +120,7 @@ const Register = () => {
                 Password
               </label>
               <input
-                className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+                className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:border-[#1c3c6b]"
                 id="grid-password"
                 type="password"
                 name="password"
@@ -141,41 +130,6 @@ const Register = () => {
             </div>
           </div>
 
-          {/* Image and Address */}
-          <div className="flex flex-wrap -mx-3">
-            <div className="w-full md:w-1/2 px-3  mb-3">
-              <label
-                className="block uppercase text-sm font-semibold mb-2"
-                htmlFor="grid-address"
-              >
-                Address
-              </label>
-              <input
-                className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
-                id="grid-address"
-                type="text"
-                name="address"
-                placeholder="52/A, Stadium, Mymensingh"
-                required
-              />
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-3">
-              <label
-                className="block uppercase text-sm font-semibold mb-2"
-                htmlFor="grid-img"
-              >
-                Images
-              </label>
-              <input
-                className="file:overflow-hidden file:border-0 file:bg-gray-100 file:px-4 w-full border rounded focus:outline-none py1 file:h-12 bg-white focus:border-[#1c3c6b] "
-                type="file"
-                name="hotelImg"
-                id="grid-img"
-                accept="image/*"
-                multiple
-              />
-            </div>
-          </div>
           {/* phone, age, gender */}
           <div className="flex flex-wrap -mx-3">
             <div className="w-full md:w-1/3 px-3 mb-3">
@@ -186,7 +140,7 @@ const Register = () => {
                 phone number
               </label>
               <input
-                className="appearance-none block w-full   border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+                className="appearance-none block w-full   border border-gray-200 rounded py-3 px-4 focus:outline-none  focus:border-[#1c3c6b]"
                 id="grid-phone"
                 type="text"
                 name="phoneNumber"
@@ -203,7 +157,7 @@ const Register = () => {
 
               <select
                 id="grid-gender"
-                className="bg-gray-50 p-3 w-full  border border-gray-200 rounded px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b] "
+                className="bg-gray-50 p-3 w-full  border border-gray-200 rounded px-4 focus:outline-none  focus:border-[#1c3c6b] "
                 name="gender"
                 required
               >
@@ -220,7 +174,7 @@ const Register = () => {
                 age
               </label>
               <input
-                className="appearance-none block w-full   border border-gray-200 rounded py-3 px-4 focus:outline-none focus:bg-white focus:border-[#1c3c6b]"
+                className="appearance-none block w-full   border border-gray-200 rounded py-3 px-4 focus:outline-none  focus:border-[#1c3c6b]"
                 id="grid-age"
                 type="text"
                 name="age"

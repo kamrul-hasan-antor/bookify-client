@@ -53,3 +53,22 @@ h3 {
 .backdrop-blur-sm {
   --tw-backdrop-blur: blur(1.5px);
 }
+
+/* scrollbar design */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar:horizontal {
+  border-radius: 10px;
+  background: #b0b0b0;
+  background: #b0b0b0;
+  border-radius: 10px;
+  height: 7px;
+}

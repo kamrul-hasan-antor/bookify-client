@@ -72,10 +72,12 @@ const Navbar = () => {
               </li>
               {user?.email === "kamrulhasan.antor95@gmail.com" ? (
                 <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
-                  <Link to="/admin/dashboard">Admin</Link>
+                  <Link to="/admin/allBookings">Admin</Link>
                 </li>
               ) : (
-                ""
+                <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
+                  <Link to="/myBookings">My Bookings</Link>
+                </li>
               )}
               {user?.email ? (
                 <li

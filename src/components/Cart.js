@@ -3,8 +3,12 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { PaymentContext } from "../context/PayMentProvider";
 
+import { AuthContext } from "../context/AuthProvider";
+
 const Cart = ({ roomToCart, setRoomToCart }) => {
   const { setAddedRoom } = useContext(PaymentContext);
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const { discount, hotelName, rackRate, roomImgs, roomName, hotleId, _id } =
     roomToCart;
@@ -27,6 +31,7 @@ const Cart = ({ roomToCart, setRoomToCart }) => {
       taxAmount,
       subTotal,
       roomId: _id,
+      userEmail: user?.email,
     };
     setAddedRoom(roomInfo);
     navigate("/payment");
@@ -44,7 +49,7 @@ const Cart = ({ roomToCart, setRoomToCart }) => {
         <div
           className={`${
             roomName ? "hidden" : "block"
-          } h-[260px] text-lg bg-white rounded-b-md flex justify-center items-center`}
+          } h-[264px] text-lg bg-white rounded-b-md flex justify-center items-center`}
         >
           <p>Add Room to Continue</p>
         </div>

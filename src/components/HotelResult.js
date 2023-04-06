@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
+const HotelResult = ({ showFilter, setShowFilter, hotels }) => {
   const [rooms, setRooms] = useState([]);
 
   const handleShowFilter = () => {
@@ -16,36 +16,20 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
       });
   }, []);
 
-  if (!hotelResult) {
-    return <div className="text-5xl mt-20">Loading...</div>;
-  }
-
   return (
     <div>
       <div className="bg-white flex py-3 px-3.5 justify-between items-center border rounded">
-        <h4 className="font-semibold">{hotelResult.length} results</h4>
-        <div className="flex items-center">
-          <button
-            className={`bg-gray-50 border border-gray-300 py-2 px-6 rounded lg:hidden`}
-            onClick={handleShowFilter}
-          >
-            Filters
-          </button>
-          <select
-            id="guest"
-            name="guest"
-            className="bg-gray-50 border border-gray-300 block py-2 px-4 rounded ml-3"
-          >
-            <option defaultValue value="popularity">
-              Popularity
-            </option>
-            <option value="price">Price</option>
-          </select>
-        </div>
+        <h4 className="font-semibold">{hotels.length} results</h4>
+        <button
+          className={`bg-gray-50 border border-gray-300 py-2 px-6 rounded lg:hidden`}
+          onClick={handleShowFilter}
+        >
+          Filters
+        </button>
       </div>
 
       {/* Hotels */}
-      {hotelResult.map((hotel, i) => {
+      {hotels.map((hotel, i) => {
         const {
           _id,
           hotelName,
@@ -59,16 +43,16 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
         return (
           <div
             key={i}
-            className="bg-white  lg:h-56 p-3.5 lg:flex my-3.5 border rounded"
+            className="bg-white  lg:h-56 p-3.5 md:flex my-3.5 border rounded"
           >
-            <div className="w-full lg:w-1/3">
+            <div className="w-full md:w-1/3 bg-blue-50">
               <img
                 src={images[images.length - 1]}
                 alt=""
                 className="h-full w-full"
               />
             </div>
-            <div className="lg:pl-3.5 lg:w-2/3 mt-4 lg:mt-0 flex flex-col justify-between">
+            <div className="md:pl-3.5 md:w-2/3 mt-4 md:mt-0 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl mb-1">{hotelName}</h3>
                 <small className="flex items-center">
@@ -80,25 +64,20 @@ const HotelResult = ({ showFilter, setShowFilter, hotelResult }) => {
               <div className="flex items-center justify-between w-full">
                 <div>
                   {rooms
-                    .filter((room) => room.hotleId === _id)
-                    .sort((a, b) => a.rackRate - b.rackRate)
-                    .map((r, i) => {
-                      return (
-                        <div key={i}>
-                          {i === 0 ? (
-                            <p>
-                              <span className="font-semibold mr-1.5">
-                                Starts From:
-                              </span>
-                              BDT {(r.rackRate * (100 - r.discount)) / 100} /per
-                              night
-                            </p>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      );
-                    })}
+                    .filter((r) => r.hotleId === _id)
+                    .map((r, i) => (
+                      <div key={i}>
+                        <p>
+                          <span className="font-semibold mr-1.5 block md:inline">
+                            Starts From:
+                          </span>
+                          <span>
+                            BDT {(r.rackRate * (100 - r.discount)) / 100} / per
+                            night
+                          </span>
+                        </p>
+                      </div>
+                    ))}
                 </div>
                 <Link
                   to={`/hotels/${_id}`}

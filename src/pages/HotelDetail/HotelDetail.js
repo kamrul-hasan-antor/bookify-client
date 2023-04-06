@@ -37,6 +37,10 @@ const HotelDetail = () => {
       .then((data) => setRooms(data));
   }, [_id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     businessFacilities,
     fitnessFacilities,

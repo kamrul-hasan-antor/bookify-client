@@ -1,6 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useContext, useEffect, useState } from "react";
 import { PaymentContext } from "../../context/PayMentProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const weekday = [
   "Sunday",
@@ -37,10 +40,11 @@ const CheckoutForm = () => {
     guestAddress: "",
   });
 
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
 
-  // get context and session data
+  // get context and session data and user
   const { addedRoom } = useContext(PaymentContext);
   const searchData = JSON.parse(sessionStorage.getItem("searchObject"));
 
@@ -95,7 +99,7 @@ const CheckoutForm = () => {
     }
     const card = elements.getElement(CardElement);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
@@ -104,7 +108,21 @@ const CheckoutForm = () => {
       setCardError(error.message);
     } else {
       setCardError("");
-      console.log(bookData);
+
+      fetch("http://localhost:5000/addBooking", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(bookData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success("Payment Successfull");
+          e.target.reset();
+
+          setTimeout(() => {
+            navigate("/myBookings");
+          }, 4500);
+        });
     }
   };
 
@@ -113,6 +131,18 @@ const CheckoutForm = () => {
       onSubmit={handleSubmit}
       className="h-max w-11/12 lg:w-2/4 lg:pt-24 pt-20 lg:w- max-w-screen-lg mx-auto"
     >
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       {/* hotel and room info */}
       <div className="lg:mt-2">
         <h4 className="bg-[#ecf3fe] p-4 text-lg font-semibold rounded-t-md border border-b-0">

@@ -64,6 +64,10 @@ const SearchHotels = () => {
     navigate("/hotels");
   };
 
+  const dateObject = new Date(searchObject.hotelCheckInDate);
+  dateObject.setDate(dateObject.getDate() + 1);
+  const minCheckOut = dateObject.toISOString().split("T")[0];
+
   return (
     <div
       className={`bg-white ${
@@ -164,7 +168,11 @@ const SearchHotels = () => {
                 : checkOutDate.toISOString().split("T")[0]
             }
             onChange={handleCheckOutDateChange}
-            min={checkInDate.toISOString().split("T")[0]}
+            min={
+              searchObject.hotelCheckInDate
+                ? minCheckOut
+                : checkInDate.toISOString().split("T")[0]
+            }
             className="bg-gray-50 border border-gray-300 rounded-lg block p-2.5 w-full px-1"
           />
         </div>

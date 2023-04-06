@@ -182,7 +182,7 @@ const AddHotels = () => {
 
   return (
     <div className="pb-6 pt-2">
-      <p className="px-5 lg:ml-1 text-2xl font-bold uppercase mb-3 pb-3 border-b">
+      <p className="px-4 lg:ml-2 text-2xl font-bold uppercase mb-3 pb-3 border-b">
         Add Hotels
       </p>
       <form onSubmit={handleAddHotel}>

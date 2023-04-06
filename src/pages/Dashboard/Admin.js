@@ -15,7 +15,7 @@ const Admin = () => {
         <div
           className={`lg:w-1/6 top bg-white ${
             open ? "left-0" : "-left-full"
-          } absolute lg:static h-full lg:h-auto lg:min-h-screen duration-500 ease-in w-1/2 lg:transition-none top-2 border-r`}
+          } absolute lg:static h-full lg:h-auto lg:min-h-screen duration-500 ease-in w-1/2 lg:transition-none top-2 border-r z-10`}
         >
           <Sidebar />
         </div>

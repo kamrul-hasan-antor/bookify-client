@@ -34,6 +34,7 @@ const RoomDetails = ({ rooms, setRoomToCart }) => {
           maxGuest,
           complimentary,
           facilities,
+          totalRoom,
         } = room;
 
         const tax = 10;
@@ -51,15 +52,18 @@ const RoomDetails = ({ rooms, setRoomToCart }) => {
                 alt=""
                 className="rounded-md w-full sm:h-[300px] md:h-[167px] 2xl:h-[212px]"
               />
-              <h4 className="text-lg font-semibold my-2 ">{roomName}</h4>
+              <h4 className="text-lg font-semibold my- ">{roomName}</h4>
               <small className="flex items-center font-semibold">
                 <BsFillPeopleFill className="mr-1" /> Maximum Capacity:{" "}
                 {maxGuest}
               </small>
+              <small className="flex items-center font-semibold">
+                <BsFillPeopleFill className="mr-1" /> Total Rooms: {totalRoom}
+              </small>
             </div>
 
             {/* right side */}
-            <div className="md:pl-4 lg:w-3/5">
+            <div className="md:pl-4 md:w-3/5 flex flex-col md:justify-between">
               <div className="flex justify-between mt-4 md:mt-0">
                 <small className="bg-[#ecf3fe] font-semibold p-2 rounded-sm">
                   Option {i + 1}
@@ -92,7 +96,7 @@ const RoomDetails = ({ rooms, setRoomToCart }) => {
                     Show All
                   </button>
                 </div>
-                <div className="flex justify-between items-center lg:justify-start lg:flex-col lg:items-end mt-3 lg:mt-0 lg:text-end">
+                <div className="flex flex-wrap justify-between items-center lg:justify-start lg:flex-col lg:items-end mt-3 lg:mt-0 lg:text-end">
                   <div>
                     <small>Starts from</small>
                     <div className="relative bg-red-100 w-max">
@@ -101,7 +105,7 @@ const RoomDetails = ({ rooms, setRoomToCart }) => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg lg:text-2xl">
+                    <h4 className="font-semibold text sm:text-2xl">
                       BDT {(rackRate * (100 - discount)) / 100}
                     </h4>
                     <p>+ Tax & Fees: {tax}% </p>

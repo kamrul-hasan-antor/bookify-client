@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
-import travel from "../../images/travel.png";
+
 const Login = () => {
   const { logInUser } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
@@ -24,20 +24,16 @@ const Login = () => {
   };
 
   return (
-    <div className="h-max w-11/12 lg:w-5/6 pt-28 lg:w- max-w-screen-xl mx-auto ">
-      <div className="flex border p-3 rounded-sm">
-        <div className="hidden lg:block lg:w-1/2 pr-3 border-r border-slate-300">
-          <img className="w-full h-full" src={travel} alt="" />
-        </div>
-
-        <form onSubmit={handleLogin} className="w-full lg:w-1/2 lg:pl-3">
+    <div className="h-max w-11/12 lg:w-1/3 pt-28 lg:w- max-w-screen-sm mx-auto">
+      <div className="border py-8 p-3 rounded-sm bg-white shadow-md">
+        <form onSubmit={handleLogin} className="w-full">
           <h4 className="mb-3 font-semibold text-2xl lg:text-3xl pb-3 uppercase text-center">
             Login Now
           </h4>
 
           {/* Eamil and Password */}
 
-          <div className="w-full px-3 mb-3">
+          <div className="w-full mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-email"
@@ -53,7 +49,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="w-full px-3 mb-3">
+          <div className="w-full mb-3">
             <label
               className="block uppercase text-sm font-semibold mb-2"
               htmlFor="grid-password"
