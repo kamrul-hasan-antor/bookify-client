@@ -32,13 +32,15 @@ const LuxuriasRooms = () => {
               />
               <div className="p-2 h-1/2 relative">
                 <div className="pb-16">
-                  <div className="flex justify-between">
-                    <small>{roomName}</small> <small> {discount}%</small>
-                  </div>
+                  <small>{roomName}</small>
                   <p className="font-semibold">{hotelName}</p>
                   <p>
                     <span className="font-semibold">{rackRate} </span>
                     <small>BDT/Night</small>
+                  </p>
+                  <p>
+                    <small className="font-semibold">Discount: </small>
+                    <small>{discount}%</small>
                   </p>
                 </div>
 

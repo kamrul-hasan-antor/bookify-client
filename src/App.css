@@ -7,10 +7,6 @@
   src: url(./font/verdana-bold.ttf);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   /* color: #1c3c6b; */
   background: #ebf0f4c5;

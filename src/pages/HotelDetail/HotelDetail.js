@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import Cart from "../../components/Cart";
 import Facilities from "../../components/Facilities";
 import Policy from "../../components/Policy";
@@ -12,6 +12,7 @@ const HotelDetail = () => {
   const [roomToCart, setRoomToCart] = useState({});
   const selectedHotel = useLoaderData();
   const [hotel] = selectedHotel;
+  const { pathname } = useLocation();
 
   const {
     _id,
@@ -38,8 +39,12 @@ const HotelDetail = () => {
   }, [_id]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  }, [pathname]);
 
   const {
     businessFacilities,

@@ -23,12 +23,36 @@ const EditRooms = () => {
     }
   };
 
+  const handleUpdateRooms = (e) => {
+    e.preventDefault();
+    const room = {
+      roomName: roomNm,
+      maxGuest: guestNum,
+      complimentary: compliment,
+      rackRate: rack,
+      discount: disc,
+      totalRoom: roomNum,
+      facilities: roomFaci,
+    };
+    console.log(room);
+
+    fetch(`http://localhost:5000/updateRoom/${data._id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(room),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+  // console.log(data);
   return (
     <div className="pb-6">
       <p className=" px-3.5 py-2.5 md:text-xl font-bold uppercase mb-3 border-b">
         Edit Room
       </p>
-      <form>
+      <form onSubmit={handleUpdateRooms}>
         <div className="flex flex-wrap px-2 lg:px-2">
           {/* room name */}
           <div className="w-full md:w-1/2  px-2 mb-3">

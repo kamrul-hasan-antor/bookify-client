@@ -20,6 +20,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 import AdminRoute from "./ProtectedRoute/AdminRoute";
 import EditRooms from "./pages/Dashboard/Admin/EditRooms";
+import UpdateHotels from "./pages/Dashboard/Admin/Update/UpdateHotels";
 
 const App = () => {
   // const { user } = useContext(AuthContext);
@@ -92,6 +93,16 @@ const App = () => {
               ),
             },
             {
+              path: "/admin/updateHotels/:id",
+              loader: ({ params }) =>
+                fetch(`http://localhost:5000/hotels/${params.id}`),
+              element: (
+                <AdminRoute path="/admin/updateHotels/:id">
+                  <UpdateHotels />
+                </AdminRoute>
+              ),
+            },
+            {
               path: "/admin/allBookings",
               element: (
                 <AdminRoute path="/admin/allBookings">
@@ -119,7 +130,7 @@ const App = () => {
               ),
             },
             {
-              path: "/editRoom/:id",
+              path: "admin/editRoom/:id",
               loader: ({ params }) =>
                 fetch(`http://localhost:5000/editRoom/${params.id}`),
               element: (

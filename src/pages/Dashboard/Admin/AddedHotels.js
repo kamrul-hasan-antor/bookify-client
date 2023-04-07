@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AddedHotels = () => {
   const allHotels = useLoaderData();
@@ -39,8 +39,13 @@ const AddedHotels = () => {
                   </thead>
                   <tbody>
                     {allHotels.reverse().map((hotel, i) => {
-                      const { hotelName, hotelPhoneNumber, address, district } =
-                        hotel;
+                      const {
+                        hotelName,
+                        hotelPhoneNumber,
+                        address,
+                        district,
+                        _id,
+                      } = hotel;
                       return (
                         <tr
                           key={i}
@@ -62,9 +67,12 @@ const AddedHotels = () => {
                           </td>
                           <td className="px-4 align-middle whitespace-nowrap flex py-2">
                             <div className="w-1/2 pr-1">
-                              <button className="bg-green-400 w-full px-4 py-2 ">
+                              <Link
+                                to={`/admin/updateHotels/${_id}`}
+                                className="bg-green-400 font-semibold w-full px-4 py-2 block text-center rounded-sm"
+                              >
                                 Edit
-                              </button>
+                              </Link>
                             </div>
                             <div className="w-1/2 pl-1">
                               <button className="bg-red-400 font-semibold w-full px-4 py-2">

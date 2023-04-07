@@ -64,7 +64,7 @@ const AllRooms = () => {
                           <td className="px-4 align-middle whitespace-nowrap flex py-2">
                             <div className="w-1/2 pr-1 ">
                               <Link
-                                to={`/editRoom/${_id}`}
+                                to={`/admin/editRoom/${_id}`}
                                 className="bg-green-400 font-semibold w-full px-4 py-2 block text-center rounded-sm"
                               >
                                 Edit
