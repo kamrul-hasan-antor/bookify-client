@@ -16,17 +16,11 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import AllBookings from "./pages/Dashboard/Admin/AllBookings";
 import MyBookings from "./pages/Dashboard/User/MyBookings";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthProvider";
 import AdminRoute from "./ProtectedRoute/AdminRoute";
 import EditRooms from "./pages/Dashboard/Admin/EditRooms";
 import UpdateHotels from "./pages/Dashboard/Admin/Update/UpdateHotels";
 
 const App = () => {
-  // const { user } = useContext(AuthContext);
-
-  // console.log(user?.email);
-
   const router = createBrowserRouter([
     {
       path: "/",
