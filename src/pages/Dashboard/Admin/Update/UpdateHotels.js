@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import {
   time,
   foods,
@@ -105,14 +106,16 @@ const UpdateHotels = () => {
       describtion: describ,
     };
 
-    fetch(`http://localhost:5000/updateHotel/${hotels._id}`, {
+    fetch(`https://bookify-server.vercel.app/updateHotel/${hotels._id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updatedData),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Hotel Updated Successfully");
+        }
       });
   };
 
@@ -121,6 +124,19 @@ const UpdateHotels = () => {
       <p className="px-3.5 py-2.5 md:text-xl font-bold uppercase mb-3 border-b">
         Update Hotel
       </p>
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <form onSubmit={handleUpdateHotel}>
         <div className="flex flex-wrap px-2 lg:px-2">
           {/* name */}
@@ -594,7 +610,7 @@ const UpdateHotels = () => {
               type="submit"
               className="bg-[#1c3c6b] hover:bg-[#2a5699] text-white py-2 rounded font-semibold mt-3 px-14"
             >
-              Add Hotel
+              Update Hotel
             </button>
           </div>
         </div>

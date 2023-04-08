@@ -5,7 +5,7 @@ const LuxuriasRooms = () => {
   const [topRooms, setTopRooms] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/luxuriasRooms")
+    fetch("https://bookify-server.vercel.app/luxuriasRooms")
       .then((res) => res.json())
       .then((data) => setTopRooms(data));
   }, []);

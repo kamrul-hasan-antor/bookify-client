@@ -36,7 +36,7 @@ const Register = () => {
           phoneNumber: phoneNumber,
         });
 
-        fetch("http://localhost:5000/addUsers", {
+        fetch("https://bookify-server.vercel.app/addUsers", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(user),

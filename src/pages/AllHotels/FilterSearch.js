@@ -43,7 +43,7 @@ const facilities = [
   "Restaurant",
 ];
 
-const accommodationType = ["Hotel", "Appartment", "Resort"];
+const accommodationType = ["Hotel", "Apartment", "Resort"];
 
 const FilterSearch = ({
   showFilter,

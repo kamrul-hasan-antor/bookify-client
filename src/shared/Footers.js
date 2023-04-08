@@ -13,6 +13,8 @@ const Footers = () => {
               <a
                 href="https://github.com/kamrul-hasan-antor"
                 className="mr-4 hover:underline md:mr-6"
+                rel="noreferrer"
+                target="_blank"
               >
                 GitHub
               </a>
@@ -21,6 +23,8 @@ const Footers = () => {
               <a
                 href="https://www.linkedin.com/in/kamrul-hasan-antor-a08919210/"
                 className="mr-4 hover:underline md:mr-6 "
+                rel="noreferrer"
+                target="_blank"
               >
                 Linked In
               </a>

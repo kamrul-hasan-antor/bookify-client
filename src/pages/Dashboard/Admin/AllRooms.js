@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const AllRooms = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/rooms")
+    fetch("https://bookify-server.vercel.app/rooms")
       .then((res) => res.json())
       .then((data) => setRooms(data));
   }, []);
@@ -13,7 +14,7 @@ const AllRooms = () => {
   const handleDeleteRoom = (id) => {
     const agree = window.confirm("Do you want to delete ?");
     if (agree) {
-      fetch(`http://localhost:5000/deleteRoom/${id}`, {
+      fetch(`https://bookify-server.vercel.app/deleteRoom/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -21,7 +22,7 @@ const AllRooms = () => {
           if (data.deletedCount > 0) {
             const afterDeleted = rooms.filter((room) => room._id !== id);
             setRooms(afterDeleted);
-            alert("room delted succesfully.");
+            toast.error("Deleted Successfully");
           }
         });
     }
@@ -34,7 +35,18 @@ const AllRooms = () => {
           Total {rooms.length} rooms
         </p>
       </div>
-
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="rounded-sm">
         <section className="bg-blueGray-50">
           <div className="w-full xl:mb-0 mx-auto">

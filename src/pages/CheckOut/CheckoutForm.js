@@ -50,7 +50,7 @@ const CheckoutForm = () => {
 
   // get hotel data
   useEffect(() => {
-    fetch("http://localhost:5000/hotels")
+    fetch("https://bookify-server.vercel.app/hotels")
       .then((res) => res.json())
       .then((data) => {
         const hotel = data.find((h) => h._id === addedRoom.hotleId);
@@ -109,7 +109,7 @@ const CheckoutForm = () => {
     } else {
       setCardError("");
 
-      fetch("http://localhost:5000/addBooking", {
+      fetch("https://bookify-server.vercel.app/addBooking", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(bookData),

@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddedHotels = () => {
   // const allHotels = useLoaderData();
   const [allHotels, setAllHotels] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/hotels")
+    fetch("https://bookify-server.vercel.app/hotels")
       .then((res) => res.json())
       .then((data) => setAllHotels(data));
   }, []);
 
   const handleDeleteHotel = (id) => {
-    const alert = window.confirm(
+    const confirm = window.confirm(
       "If you delete the hotel, the rooms of the deleted hotel will be removed. Do you want to delete hotel? "
     );
-
-    fetch(`http://localhost:5000/deleteHotel/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
-        if (data.deletedCount > 0) {
-          const afterDeleted = allHotels.filter((hotel) => hotel._id !== id);
-          setAllHotels(afterDeleted);
-          alert("hotel delted succesfully.");
-        }
-      });
+    if (confirm) {
+      fetch(`https://bookify-server.vercel.app/deleteHotel/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            const afterDeleted = allHotels.filter((hotel) => hotel._id !== id);
+            setAllHotels(afterDeleted);
+            toast.error("Deleted Successfully");
+          }
+        });
+    }
   };
 
   return (
@@ -38,7 +38,18 @@ const AddedHotels = () => {
           Total {allHotels.length} hotels
         </p>
       </div>
-
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="rounded-sm">
         <section className="bg-blueGray-50">
           <div className="w-full xl:mb-0 mx-auto">

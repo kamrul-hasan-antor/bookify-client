@@ -7,7 +7,7 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myBooking?email=${user?.email}`)
+    fetch(`https://bookify-server.vercel.app/myBooking?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [user?.email]);

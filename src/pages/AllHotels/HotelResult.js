@@ -9,7 +9,7 @@ const HotelResult = ({ showFilter, setShowFilter, hotels }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/roomPrice")
+    fetch("https://bookify-server.vercel.app/roomPrice")
       .then((res) => res.json())
       .then((data) => {
         setRooms(data);

@@ -32,13 +32,13 @@ const App = () => {
         },
         {
           path: "/hotels",
-          loader: () => fetch("http://localhost:5000/hotels"),
+          loader: () => fetch("https://bookify-server.vercel.app/hotels"),
           element: <AllHotels />,
         },
         {
           path: "/hotels/:id",
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/hotels/${params.id}`),
+            fetch(`https://bookify-server.vercel.app/hotels/${params.id}`),
           element: (
             <ProtectedRoute>
               <HotelDetail />
@@ -62,7 +62,7 @@ const App = () => {
           children: [
             {
               path: "/admin/allUsers",
-              loader: () => fetch("http://localhost:5000/users"),
+              loader: () => fetch("https://bookify-server.vercel.app/users"),
               element: (
                 <AdminRoute path="/admin/allUsers">
                   <AllUsers />
@@ -79,7 +79,7 @@ const App = () => {
             },
             {
               path: "/admin/addedHotels",
-              // loader: () => fetch("http://localhost:5000/hotels"),
+
               element: (
                 <AdminRoute path="/admin/addedHotels">
                   <AddedHotels />
@@ -89,7 +89,7 @@ const App = () => {
             {
               path: "/admin/updateHotels/:id",
               loader: ({ params }) =>
-                fetch(`http://localhost:5000/hotels/${params.id}`),
+                fetch(`https://bookify-server.vercel.app/hotels/${params.id}`),
               element: (
                 <AdminRoute path="/admin/updateHotels/:id">
                   <UpdateHotels />
@@ -107,7 +107,8 @@ const App = () => {
 
             {
               path: "/admin/addRoom",
-              loader: () => fetch("http://localhost:5000/hotelName"),
+              loader: () =>
+                fetch("https://bookify-server.vercel.app/hotelName"),
               element: (
                 <AdminRoute path="/admin/addRoom">
                   <AddRooms />
@@ -125,7 +126,9 @@ const App = () => {
             {
               path: "admin/editRoom/:id",
               loader: ({ params }) =>
-                fetch(`http://localhost:5000/editRoom/${params.id}`),
+                fetch(
+                  `https://bookify-server.vercel.app/editRoom/${params.id}`
+                ),
               element: (
                 <AdminRoute path="/editRoom/:id">
                   <EditRooms />
@@ -134,7 +137,6 @@ const App = () => {
             },
             {
               path: "/myBookings",
-              // loader: () => fetch("http://localhost:5000/rooms"),
               element: <MyBookings />,
             },
           ],

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 import { roomFacilities } from "./facilitiesData";
 
 const AddRooms = () => {
@@ -64,7 +64,7 @@ const AddRooms = () => {
       facilities: roomF,
     };
 
-    fetch(`http://localhost:5000/addRooms`, {
+    fetch(`https://bookify-server.vercel.app/addRooms`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(room),
@@ -72,6 +72,7 @@ const AddRooms = () => {
       .then((res) => res.json())
       .then((data) => {
         form.reset();
+        toast.success("Room Added Successfully");
       });
   };
 
@@ -80,6 +81,20 @@ const AddRooms = () => {
       <p className=" px-3.5 py-2.5 md:text-xl font-bold uppercase mb-3 border-b">
         Add Rooms
       </p>
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+
       <form onSubmit={handleAddRooms}>
         <div className="flex flex-wrap px-2 lg:px-2">
           {/* room name */}

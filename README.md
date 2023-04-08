@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Bookify Hotel Booking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live_Link: https://bookify-ce1d5.web.app/
 
-## Available Scripts
+### Admin : kamrulhasan.antor95@gmail.com
 
-In the project directory, you can run:
+### Password : 123456
 
-### `npm start`
+#### Technologies -----------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. For fronend design and functionality I use React JS and Tailwind CSS and some related packages to created the frontend beautiful and interactive.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. In the backend part I use Node JS, Express JS for creat and use the server and MongoDB for database.
 
-### `npm test`
+3. I use Stripe JS for payment gateway and ImgBB for image hosting.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Features (User) -----------
 
-### `npm run build`
+1. This website provides users with an easy way to book hotel rooms.
+2. The home page includes a search option where users can select their destination, check-in and check-out dates, and the number of guests.
+3. Upon clicking the search button, users will be directed to the hotels page, where hotels will be displayed based on the selected destination.
+4. On the hotels page, users can modify their previous search options, such as the destination, and use the filters to refine their search results. For example, users can search for hotels by name and filter by accommodation type and facilities.
+5. Upon clicking the "view rooms" button, users will be directed to the hotel details page, where they can view all the available rooms.
+6. Upon clicking the "add room" button, the selected room will be added to the user's cart.
+7. On the cart page, users can proceed to the payment page, which will display the selected room and the check-in and check-out dates.
+8. Users must fill out their guest details and make payment using their card information. (Demo card information: 4242 4242 4242 4242, any future date, CVC: any 3-digit number, and 5-digit zip code).
+9. Upon making payment, users will be redirected to the "My Bookings" page, where they can view all the hotels and rooms they have booked.
+10. The admin routes are protected, and users are not allowed to navigate to the admin page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Features (Admin) -----------
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Once an administrator logs in, they will have access to an "Admin Route" option in the navigation bar.
+2. The administrator will be able to view all the bookings made by users.
+3. The administrator has the ability to add hotels by providing the necessary information.
+4. The administrator can view all the hotels that have been added in the "All Hotels" option. From there, they can edit the hotel's information and delete the hotel. If the administrator deletes a hotel, all the rooms added to that hotel will also be deleted. A pop-up confirmation will be provided to the administrator.
+5. Additionally, the administrator can add rooms to a specific hotel by providing the required information, as well as update or delete any existing room.
+6. The administrator has access to view all registered users.

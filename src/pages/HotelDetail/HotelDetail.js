@@ -33,7 +33,7 @@ const HotelDetail = () => {
   } = hotel;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/room/${_id}`)
+    fetch(`https://bookify-server.vercel.app/room/${_id}`)
       .then((res) => res.json())
       .then((data) => setRooms(data));
   }, [_id]);

@@ -4,7 +4,7 @@ const AllBookings = () => {
   const [allBookings, setAllBookings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allBooking")
+    fetch("https://bookify-server.vercel.app/allBooking")
       .then((res) => res.json())
       .then((data) => setAllBookings(data));
   }, []);

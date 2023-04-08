@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { roomFacilities } from "./facilitiesData";
+import { ToastContainer, toast } from "react-toastify";
 const EditRooms = () => {
   const data = useLoaderData();
 
@@ -36,14 +37,16 @@ const EditRooms = () => {
     };
     console.log(room);
 
-    fetch(`http://localhost:5000/updateRoom/${data._id}`, {
+    fetch(`https://bookify-server.vercel.app/updateRoom/${data._id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(room),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Room Updated Successfully");
+        }
       });
   };
   // console.log(data);
@@ -52,6 +55,18 @@ const EditRooms = () => {
       <p className=" px-3.5 py-2.5 md:text-xl font-bold uppercase mb-3 border-b">
         Edit Room
       </p>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <form onSubmit={handleUpdateRooms}>
         <div className="flex flex-wrap px-2 lg:px-2">
           {/* room name */}
