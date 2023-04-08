@@ -9,7 +9,8 @@ import { IoIosArrowUp } from "react-icons/io";
 import { MdDomainAdd } from "react-icons/md";
 import { BsHouseAdd } from "react-icons/bs";
 import { ImHome3 } from "react-icons/im";
-import { AuthContext } from "../context/AuthProvider";
+import { AuthContext } from "../../context/AuthProvider";
+
 const Sidebar = () => {
   const [show, setShow] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
@@ -98,7 +99,12 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        <Link to="/admin/allUsers" className="flex items-center p-3  w-full">
+        <Link
+          to="/admin/allUsers"
+          className={`${
+            isActive("/admin/allUsers") ? "bg-gray-100" : ""
+          }  flex items-center p-3  w-full hover:bg-gray-100`}
+        >
           <FaUsers size={20} />
           <p className="pl-2 font-semibold">All Users</p>
         </Link>

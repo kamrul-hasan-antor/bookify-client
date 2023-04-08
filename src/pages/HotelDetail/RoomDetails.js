@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import { GiKnifeFork } from "react-icons/gi";
-import RoomModal from "../pages/HotelDetail/RoomModal";
+import RoomModal from "./RoomModal";
 
 const RoomDetails = ({ rooms, setRoomToCart }) => {
   const [showModal, setShowModal] = useState(false);

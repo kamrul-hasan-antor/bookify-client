@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import { PaymentContext } from "../context/PayMentProvider";
-
-import { AuthContext } from "../context/AuthProvider";
+import { PaymentContext } from "../../context/PayMentProvider";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Cart = ({ roomToCart, setRoomToCart }) => {
   const { setAddedRoom } = useContext(PaymentContext);

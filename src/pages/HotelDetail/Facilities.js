@@ -19,8 +19,12 @@ const Facilities = ({ facilities }) => {
         Hotel Facilities
       </h4>
       <div className="p-4 bg-white border border-t-0 rounded-b-md mb-10">
-        <div className="mb-5">
-          <p className="">Business Facilities</p>
+        <div
+          className={`${
+            businessFacilities.length > 0 ? "block" : "hidden"
+          } mb-5`}
+        >
+          <p>Business Facilities</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-2">
             {businessFacilities
               ? businessFacilities?.map((b, i) => (
@@ -33,7 +37,9 @@ const Facilities = ({ facilities }) => {
           </div>
         </div>
 
-        <div className="mb-5">
+        <div
+          className={`${foodFacilities.length > 0 ? "block" : "hidden"} mb-5`}
+        >
           <p className="">Food & Drink</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4   gap-2">
             {foodFacilities
@@ -47,7 +53,11 @@ const Facilities = ({ facilities }) => {
           </div>
         </div>
 
-        <div className="mb-5">
+        <div
+          className={`${
+            generalFacilities.length > 0 ? "block" : "hidden"
+          } mb-5`}
+        >
           <p className="">General</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-2">
             {generalFacilities
@@ -61,7 +71,11 @@ const Facilities = ({ facilities }) => {
           </div>
         </div>
 
-        <div className="mb-5">
+        <div
+          className={`${
+            fitnessFacilities.length > 0 ? "block" : "hidden"
+          } mb-5`}
+        >
           <p className="">Fitness Facilities</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4   gap-2">
             {fitnessFacilities
@@ -75,7 +89,9 @@ const Facilities = ({ facilities }) => {
           </div>
         </div>
 
-        <div className="mb-5">
+        <div
+          className={`${mediaFacilities.length > 0 ? "block" : "hidden"} mb-5`}
+        >
           <p className="">Media & Technology</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4   gap-2">
             {mediaFacilities
@@ -89,7 +105,11 @@ const Facilities = ({ facilities }) => {
           </div>
         </div>
 
-        <div className="mb-5">
+        <div
+          className={`${
+            transportFacilities.length > 0 ? "block" : "hidden"
+          } mb-5`}
+        >
           <p className="">Transportation</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4   gap-2">
             {transportFacilities
@@ -103,7 +123,9 @@ const Facilities = ({ facilities }) => {
           </div>
         </div>
 
-        <div className="mb-5">
+        <div
+          className={`${othersFacilities.length > 0 ? "block" : "hidden"} mb-5`}
+        >
           <p className="">Others</p>
           <div className="grid mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4   gap-2">
             {othersFacilities

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import FilterSearch from "../../components/FilterSearch";
-import HotelResult from "../../components/HotelResult";
-import SearchHotels from "../../components/SearchHotels";
+import FilterSearch from "./FilterSearch";
+import HotelResult from "./HotelResult";
+import SearchHotels from "../../shared/SearchHotels";
 
 const AllHotels = () => {
   const allHotels = useLoaderData();

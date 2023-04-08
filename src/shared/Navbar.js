@@ -61,13 +61,6 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li className="md:px-3 font-semibold nav_list py-1 md:py-0 ">
-                <a href="#luxuriasRooms">Luxurias Rooms</a>
-              </li>
-
-              <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
-                <a href="#contact">Contact</a>
-              </li>
               {user?.email === "kamrulhasan.antor95@gmail.com" ? (
                 <li className="md:px-3 font-semibold nav_list py-1 md:py-0">
                   <Link to="/admin/allBookings">Admin</Link>
@@ -134,12 +127,6 @@ const Navbar = () => {
         <ul className="px-6">
           <li className="py-3">
             <Link to="/">Home</Link>
-          </li>
-          <li className="py-3">
-            <a href="#luxuriasRooms">Luxurias Rooms</a>
-          </li>
-          <li className="py-3">
-            <Link to="/">Contact</Link>
           </li>
           {user?.email === "kamrulhasan.antor95@gmail.com" ? (
             <li className="py-3">

@@ -1,5 +1,5 @@
 import React from "react";
-import SearchHotels from "./SearchHotels";
+import SearchHotels from "../../shared/SearchHotels";
 
 const Header = () => {
   return (

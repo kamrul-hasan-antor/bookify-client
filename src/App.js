@@ -79,7 +79,7 @@ const App = () => {
             },
             {
               path: "/admin/addedHotels",
-              loader: () => fetch("http://localhost:5000/hotels"),
+              // loader: () => fetch("http://localhost:5000/hotels"),
               element: (
                 <AdminRoute path="/admin/addedHotels">
                   <AddedHotels />
@@ -116,7 +116,6 @@ const App = () => {
             },
             {
               path: "/admin/allRooms",
-              loader: () => fetch("http://localhost:5000/rooms"),
               element: (
                 <AdminRoute path="/admin/allRooms">
                   <AllRooms />

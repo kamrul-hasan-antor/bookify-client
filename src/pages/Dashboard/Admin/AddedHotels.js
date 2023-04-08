@@ -1,8 +1,35 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddedHotels = () => {
-  const allHotels = useLoaderData();
+  // const allHotels = useLoaderData();
+  const [allHotels, setAllHotels] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/hotels")
+      .then((res) => res.json())
+      .then((data) => setAllHotels(data));
+  }, []);
+
+  const handleDeleteHotel = (id) => {
+    const alert = window.confirm(
+      "If you delete the hotel, the rooms of the deleted hotel will be removed. Do you want to delete hotel? "
+    );
+
+    fetch(`http://localhost:5000/deleteHotel/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        if (data.deletedCount > 0) {
+          const afterDeleted = allHotels.filter((hotel) => hotel._id !== id);
+          setAllHotels(afterDeleted);
+          alert("hotel delted succesfully.");
+        }
+      });
+  };
 
   return (
     <div>
@@ -75,7 +102,10 @@ const AddedHotels = () => {
                               </Link>
                             </div>
                             <div className="w-1/2 pl-1">
-                              <button className="bg-red-400 font-semibold w-full px-4 py-2">
+                              <button
+                                onClick={() => handleDeleteHotel(_id)}
+                                className="bg-red-400 font-semibold w-full px-4 py-2"
+                              >
                                 Delete
                               </button>
                             </div>

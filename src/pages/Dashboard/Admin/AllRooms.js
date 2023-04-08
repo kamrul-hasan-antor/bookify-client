@@ -1,8 +1,31 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllRooms = () => {
-  const rooms = useLoaderData();
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/rooms")
+      .then((res) => res.json())
+      .then((data) => setRooms(data));
+  }, []);
+
+  const handleDeleteRoom = (id) => {
+    const agree = window.confirm("Do you want to delete ?");
+    if (agree) {
+      fetch(`http://localhost:5000/deleteRoom/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            const afterDeleted = rooms.filter((room) => room._id !== id);
+            setRooms(afterDeleted);
+            alert("room delted succesfully.");
+          }
+        });
+    }
+  };
 
   return (
     <div>
@@ -71,9 +94,12 @@ const AllRooms = () => {
                               </Link>
                             </div>
                             <div className="w-1/2 pl-1">
-                              <Link className="bg-red-400 font-semibold w-full px-4 py-2 block text-center rounded-sm">
+                              <button
+                                onClick={() => handleDeleteRoom(_id)}
+                                className="bg-red-400 font-semibold w-full px-4 py-2 block text-center rounded-sm"
+                              >
                                 Delete
-                              </Link>
+                              </button>
                             </div>
                           </td>
                         </tr>

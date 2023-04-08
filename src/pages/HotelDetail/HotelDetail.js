@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useLoaderData, useLocation } from "react-router-dom";
-import Cart from "../../components/Cart";
-import Facilities from "../../components/Facilities";
-import Policy from "../../components/Policy";
-import RoomDetails from "../../components/RoomDetails";
+import Cart from "./Cart";
+import Facilities from "./Facilities";
+import Policy from "./Policy";
+import RoomDetails from "./RoomDetails";
 import ImageSlider from "./ImageSlider";
 
 const HotelDetail = () => {

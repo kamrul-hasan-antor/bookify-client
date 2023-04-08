@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "./Sidebar";
 import { BsJustifyRight } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 
