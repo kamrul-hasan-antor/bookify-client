@@ -10,8 +10,10 @@ const ImageSlider = ({ images }) => {
     <Swiper
       className="mySwiper rounded-md h-full w-full"
       navigation={true}
+      loop={true}
       spaceBetween={30}
       centeredSlides={true}
+      speed={1000}
       autoplay={{
         delay: 3500,
         disableOnInteraction: false,

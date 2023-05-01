@@ -3,7 +3,7 @@ import React from "react";
 const Footers = () => {
   return (
     <footer className="bg-white">
-      <div className="h-max w-11/12 lg:w- max-w-screen-2xl mx-auto pt-12">
+      <div className="h-max w-11/12 lg:w- max-w-screen-2xl mx-auto pt-44">
         <div className="sm:flex sm:items-center sm:justify-between">
           <h4 className="self-center pb-3 md:pb-0 text-3xl uppercase font-semibold whitespace-nowrap">
             Bookify

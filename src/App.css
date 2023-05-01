@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 @font-face {
   font-family: myFirstFont;
   src: url(./font/BrownLight\ Regular.ttf);
@@ -8,12 +9,19 @@
 }
 
 body {
-  /* color: #1c3c6b; */
-  background: #ebf0f4c5;
+  background: #f7f7f7;
 }
 .header {
   background-image: url("./images/bg.webp");
   background-size: cover;
+}
+
+h6 {
+  font-family: "Dancing Script", cursive;
+  color: #1c3c6b;
+}
+h6 > span {
+  background-color: #1c3c6b;
 }
 
 h3 {
@@ -45,7 +53,7 @@ h3 {
   border-radius: 50%;
 }
 .swiper-button-next {
-  right: 15px !important;
+  right: 20px !important;
 }
 .swiper-button-prev {
   left: 20px !important;
@@ -71,4 +79,35 @@ h3 {
   background: #b0b0b0;
   border-radius: 10px;
   height: 7px;
+}
+
+.reviews {
+  background-image: url("./images/bg-review.png");
+  background-size: contain;
+  background-position: center center;
+}
+
+.review-card:before {
+  content: "";
+  height: 40px;
+  width: 50px;
+  background-color: #ececec;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  -webkit-clip-path: path("M0 0V40L18.75 20V0H0ZM31.25 0V40L50 20V0H31.25Z");
+  clip-path: path("M0 0V40L18.75 20V0H0ZM31.25 0V40L50 20V0H31.25Z");
+}
+
+.luxuriasRooms {
+  background-image: url("./images/hotels-bg.png");
+}
+
+@media only screen and (min-width: 1024px) {
+  .subscribe {
+    background-image: url("./images/subscribe1.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }

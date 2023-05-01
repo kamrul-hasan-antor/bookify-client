@@ -77,7 +77,7 @@ const HotelDetail = () => {
     <div className="h-max w-11/12 pt-20 lg:w- max-w-screen-2xl mx-auto">
       <div>
         {/* -------Top Banner------- */}
-        <div className="flex lg:flex-row flex-col mt-4 bg-white p-4 rounded-md">
+        <div className="flex lg:flex-row flex-col mt-4 bg-white p-4 rounded-md border">
           <div className="lg:w-[50%] lg:h-[345px] h-full">
             <ImageSlider images={images} />
           </div>

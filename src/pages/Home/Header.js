@@ -3,7 +3,10 @@ import SearchHotels from "../../shared/SearchHotels";
 
 const Header = () => {
   return (
-    <div className="header py-20 lg:py-0 h-max lg:h-screen flex justify-center items-center">
+    <div
+      id="header"
+      className="header py-20 lg:py-0 h-max lg:h-screen flex justify-center items-center"
+    >
       <SearchHotels />
     </div>
   );
